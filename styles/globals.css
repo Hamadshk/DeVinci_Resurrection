@@ -1,0 +1,443 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  /* Remove excessive GPU acceleration from all elements */
+}
+
+/* Optimized smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for navbar height */
+  /* Remove unnecessary GPU acceleration from html */
+}
+
+body {
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+  scroll-behavior: smooth;
+  font-family: "Inter", sans-serif;
+  color: #e2e8f0;
+  /* Optimize scrolling performance */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  /* Remove excessive GPU acceleration that can cause lag */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optimize sections for smooth scrolling - CRITICAL CHANGE */
+section {
+  overflow-x: hidden !important;
+  /* Only apply GPU acceleration to sections with animations */
+  contain: layout style;
+  /* Remove excessive willChange and transform3d */
+}
+
+/* Special GPU acceleration only for hero section */
+.home-page {
+  contain: layout style paint;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+#about {
+  min-height: 100vh;
+}
+
+/* Optimized animations for better performance */
+.about-section,
+.skills,
+.jumbo,
+.timeline,
+.contact,
+.goals,
+.portfolio {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Apply GPU acceleration only when animating */
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Add GPU acceleration only during animation */
+.about-section,
+.portfolio,
+.contact {
+  transform: translate3d(1500px, 0, 0);
+  will-change: transform;
+}
+
+.skills,
+.goals,
+.timeline {
+  transform: translate3d(-1500px, 0, 0);
+  will-change: transform;
+}
+
+.about-in-view,
+.skills-in-view,
+.jumbo-in-view,
+.timeline-in-view,
+.contact-in-view,
+.goals-in-view,
+.portfolio-in-view {
+  transform: translate3d(0, 0, 0) !important;
+  /* Remove will-change after animation completes */
+  will-change: auto;
+}
+
+.pie-chart > * {
+  /* Optimize chart elements */
+  will-change: auto;
+  transform: translateZ(0);
+}
+
+.special {
+  color: #06b6d4;
+  font-family: "Major Mono Display", monospace;
+}
+
+.contact-shortcut {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  padding: 12px;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+  border-radius: 50%;
+  width: 60px;
+  aspect-ratio: 1;
+  color: white;
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Keep GPU acceleration for floating button */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.contact-shortcut:hover {
+  transform: translate3d(0, 0, 0) scale(1.1);
+  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.4);
+}
+
+.back {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.8),
+    rgba(30, 41, 59, 0.9),
+    rgba(15, 23, 42, 0.8)
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  /* Remove unnecessary GPU acceleration */
+}
+
+.special-text-header {
+  margin: 0;
+  font-family: "Major Mono Display", sans-serif;
+  font-size: 80px !important;
+  letter-spacing: 4px;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    #06b6d4,
+    #3b82f6,
+    #8b5cf6,
+    #ec4899,
+    #06b6d4
+  );
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  animation: gradientShift 8s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+  /* Optimize gradient animation */
+  will-change: background-position;
+  transform: translateZ(0);
+}
+
+.card-skills {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  cursor: pointer;
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9),
+    rgba(30, 41, 59, 0.8)
+  );
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  /* Optimize card animations */
+  will-change: auto;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-skills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  transition: all 0.3s ease;
+  /* Optimize pseudo-element */
+  will-change: auto;
+  transform: translateZ(0);
+}
+
+.card-skills:nth-child(2)::before {
+  background: linear-gradient(90deg, #ef4444, #f97316);
+}
+
+.card-skills:nth-child(3)::before {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.card-skills:nth-child(4)::before {
+  background: linear-gradient(90deg, #eab308, #f59e0b);
+}
+
+.card-skills:nth-child(5)::before {
+  background: linear-gradient(90deg, #8b5cf6, #a855f7);
+}
+
+.card-skills:nth-child(6)::before {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.card-skills:hover {
+  transform: translate3d(0, -8px, 0);
+  box-shadow: 
+    0 20px 40px rgba(6, 182, 212, 0.15),
+    0 0 0 1px rgba(6, 182, 212, 0.2);
+  /* Add will-change only during hover */
+  will-change: transform, box-shadow;
+}
+
+.card-skills:hover::before {
+  height: 4px;
+  box-shadow: 0 0 20px currentColor;
+  will-change: height, box-shadow;
+}
+
+.card-info {
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+/* Optimized gradient animation with better performance */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 200% 50%;
+  }
+  75% {
+    background-position: 300% 50%;
+  }
+}
+
+/* Additional performance optimizations */
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Responsive optimizations for mobile */
+@media screen and (max-width: 880px) {
+  .header-logo {
+    font-size: 20px !important;
+  }
+
+  .card-skills {
+    padding: 16px;
+    /* Reduce transform intensity on mobile for better performance */
+  }
+  
+  /* Remove GPU acceleration on mobile for better performance */
+  .card-skills:hover {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .special-text-header {
+    font-size: 60px !important;
+    letter-spacing: 3px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .special-text-header {
+    font-size: 45px !important;
+    letter-spacing: 2px;
+  }
+
+  .card-skills {
+    padding: 16px;
+  }
+}
+
+@media screen and (max-width: 545px) {
+  .slogan {
+    font-size: 16px !important;
+  }
+
+  .special-text-header {
+    font-size: 35px !important;
+    letter-spacing: 1px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .text-small-z {
+    font-size: 10px !important;
+  }
+
+  .card-skills {
+    padding: 12px;
+    /* Further reduce transforms on very small screens */
+  }
+  
+  .card-skills:hover {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-effect {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+/* Performance utility classes */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Loading animation optimization */
+@keyframes optimizedSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: optimizedSpin 1s linear infinite;
+  will-change: transform;
+  transform-origin: center;
+}
+
+/* Scroll optimization for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.5);
+}
+
+/* CRITICAL: Smooth scrolling performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Optimize for 60fps scrolling */
+@media (min-width: 769px) {
+  /* Full GPU acceleration only on desktop */
+  .home-page {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+  
+  /* Reduce GPU acceleration on mobile */
+  .home-page {
+    will-change: auto;
+    transform: none;
+  }
+  
+  /* Reduce background blur on mobile for better performance */
+  .back {
+    backdrop-filter: blur(10px);
+  }
+  
+  .card-skills {
+    backdrop-filter: blur(10px);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(10px);
+  }
+}
