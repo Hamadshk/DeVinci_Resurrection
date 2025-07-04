@@ -59,10 +59,50 @@ const BeautifulPDFViewer = ({ file, height = "700px" }) => {
 
   return (
     <div className="pdf-viewer-bezeless relative w-full h-full bg-white rounded-lg overflow-hidden shadow-lg">
+      {/* Custom styles for scrollbar control */}
+      <style jsx>{`
+        .pdf-content {
+          overflow-x: hidden !important;
+          overflow-y: auto;
+        }
+        
+        .pdf-content::-webkit-scrollbar {
+          width: 2px;
+        }
+        
+        .pdf-content::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 2px;
+        }
+        
+        .pdf-content::-webkit-scrollbar-thumb {
+          background: #c1c1c1;
+          border-radius: 2px;
+        }
+        
+        .pdf-content::-webkit-scrollbar-thumb:hover {
+          background: #a8a8a8;
+        }
+        
+        /* Firefox scrollbar styling */
+        .pdf-content {
+          scrollbar-width: thin;
+          scrollbar-color: #c1c1c1 #f1f1f1;
+        }
+        
+        /* Ensure PDF elements don't create horizontal scroll */
+        .pdf-content iframe,
+        .pdf-content object,
+        .pdf-content embed {
+          overflow-x: hidden !important;
+          max-width: 100% !important;
+        }
+      `}</style>
+      
       {/* PDF Content Area */}
       <div 
         className="pdf-content relative w-full h-full"
-        style={{ height: height }}
+        style={{ height: height, overflowX: 'hidden', overflowY: 'auto' }}
       >
         {/* Loading State */}
         {isLoading && (
@@ -86,7 +126,7 @@ const BeautifulPDFViewer = ({ file, height = "700px" }) => {
 
         {/* PDF Viewer */}
         {!isLoading && !hasError && (
-          <div className="w-full h-full">
+          <div className="w-full h-full" style={{ overflowX: 'hidden' }}>
             {isChrome && useEmbedFallback ? (
               <embed
                 src={`${file}#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit`}
@@ -94,6 +134,7 @@ const BeautifulPDFViewer = ({ file, height = "700px" }) => {
                 width="100%"
                 height="100%"
                 className="border-0"
+                style={{ maxWidth: '100%', overflowX: 'hidden' }}
                 onLoad={handleIframeLoad}
                 onError={() => {
                   setUseEmbedFallback(false);
@@ -106,12 +147,14 @@ const BeautifulPDFViewer = ({ file, height = "700px" }) => {
                 width="100%"
                 height="100%"
                 className="border-0"
+                style={{ maxWidth: '100%', overflowX: 'hidden' }}
               >
                 <iframe
                   src={`${file}#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit`}
                   width="100%"
                   height="100%"
                   className="border-0"
+                  style={{ maxWidth: '100%', overflowX: 'hidden' }}
                   onLoad={handleIframeLoad}
                   onError={handleIframeError}
                   title="PDF Viewer"

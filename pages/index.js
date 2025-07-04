@@ -14,6 +14,7 @@ const CompaniesCarousel = lazy(() => import("../components/CompaniesCarousel"));
 const Goals = lazy(() => import("../components/Goals"));
 const TestimonialsCarousel = lazy(() => import("../components/TestimonialsCarousel"));
 const FreeConsultation = lazy(() => import("../components/FreeConsultation"));
+const Portfolio = lazy(() => import("../components/Portfolio"));
 
 // Import components dynamically to avoid SSR issues
 const NavBar = dynamic(() => import("../components/NavBar"), { ssr: false });
@@ -138,6 +139,15 @@ const Home = () => {
           className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6"
         >
           <CompaniesCarousel />
+        </section>
+      </Suspense>
+
+      <Suspense fallback={<LoadingSpinner />}>
+        <section
+          id="portfolio"
+          className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6"
+        >
+          <Portfolio inView={portfolioInView} />
         </section>
       </Suspense>
 
