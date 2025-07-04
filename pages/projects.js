@@ -12,7 +12,7 @@ const Projects = () => {
   const [ref, inView] = useInView(options);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen">
       <NavBar />
       <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
         <div className="text-center mb-12">

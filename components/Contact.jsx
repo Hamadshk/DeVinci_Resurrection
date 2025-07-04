@@ -3,6 +3,7 @@ import image from "../assets/whatsapp.svg";
 import emailjs from "@emailjs/browser";
 import { Alert, Spinner } from "flowbite-react";
 import { HiInformationCircle } from "react-icons/hi";
+import { FuturisticIcon, FuturisticIcons } from "./FuturisticIcon";
 
 export default function Contact({ inView }) {
   const form = useRef();
@@ -73,7 +74,7 @@ export default function Contact({ inView }) {
   }
   return (
     <form ref={form} className={`contact ${inView && "contact-in-view"}`}>
-      <div className={`isolate bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 min-h-screen py-16`}>
+      <div className={`isolate min-h-screen py-16`}>
         <div className="max-w-screen-xl mx-auto px-4 lg:px-6">
           <div className="max-w-screen-md mb-8 lg:mb-16">
             <h2 className="mb-6 text-5xl tracking-tight font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -109,13 +110,13 @@ export default function Contact({ inView }) {
               {/* Map Section */}
               <div className="lg:w-2/3 md:w-1/2 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden p-6 shadow-2xl">
                 <div className="relative h-96 rounded-lg overflow-hidden">
-                  {/* Primary Google Maps Iframe */}
+                  {/* Enhanced Google Maps Iframe */}
                   <iframe
                     width="100%"
                     height="100%"
                     className="absolute inset-0 rounded-lg"
                     title="DeVinci Codes Location - Johar Town, Lahore"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.176234567891!2d74.25636269870087!3d31.46458205130698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1735948800000!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.176234567891!2d74.25636269870087!3d31.46458205130698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1735948800001!5m2!1sen!2s"
                     style={{ 
                       filter: "brightness(0.8) contrast(1.2)",
                       border: 0
@@ -123,20 +124,22 @@ export default function Contact({ inView }) {
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    sandbox="allow-scripts allow-same-origin allow-popups"
+                    sandbox="allow-scripts allow-same-origin allow-forms"
+                    onLoad={() => console.log('Google Maps loaded successfully')}
                     onError={(e) => {
+                      console.error('Google Maps failed to load:', e);
                       e.target.style.display = 'none';
                       e.target.nextElementSibling.style.display = 'block';
                     }}
                   ></iframe>
                   
-                  {/* Fallback Static Map */}
+                  {/* Enhanced Fallback Map */}
                   <div 
-                    className="absolute inset-0 rounded-lg bg-slate-700 flex items-center justify-center"
+                    className="absolute inset-0 rounded-lg bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm border border-slate-600/50 flex items-center justify-center"
                     style={{ display: 'none' }}
                   >
                     <div className="text-center p-8">
-                      <div className="mb-4">
+                      <div className="mb-6">
                         <svg className="w-16 h-16 mx-auto text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -144,17 +147,30 @@ export default function Contact({ inView }) {
                       </div>
                       <h3 className="text-xl font-semibold text-white mb-2">Our Location</h3>
                       <p className="text-slate-300 mb-4">Johar Town, Lahore, Punjab, Pakistan</p>
-                      <a
-                        href="https://maps.google.com/?q=Johar+Town,+Lahore,+Punjab,+Pakistan"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-2 bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg transition-colors"
-                      >
-                        <span>View on Google Maps</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
+                      <p className="text-slate-400 text-sm mb-6">Map temporarily unavailable. Use the button below to view our location.</p>
+                      
+                      <div className="space-y-3">
+                        <a
+                          href="https://maps.google.com/?q=Johar+Town,+Lahore,+Punjab,+Pakistan"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-2 bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                        >
+                          <span>View on Google Maps</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                        
+                        <button
+                          onClick={() => {
+                            window.location.reload();
+                          }}
+                          className="block mx-auto text-cyan-400 hover:text-cyan-300 text-sm underline transition-colors"
+                        >
+                          Refresh page to retry loading map
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -278,7 +294,15 @@ export default function Contact({ inView }) {
                         <span>Sending...</span>
                       </>
                     ) : (
-                      <span>Let's Talk 🚀</span>
+                      <span className="flex items-center">
+                        Let's Talk 
+                        <FuturisticIcon 
+                          icon={FuturisticIcons.rocket} 
+                          glowColor="cyan" 
+                          animated 
+                          className="ml-2" 
+                        />
+                      </span>
                     )}
                   </button>
                   

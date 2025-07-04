@@ -22,7 +22,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>MERN STACK</Timeline.Time>
-              <Timeline.Title>City Swapp (Live Website)</Timeline.Title>
+              <Timeline.Title className="text-white">City Swapp (Live Website)</Timeline.Title>
               <Timeline.Body>
                 <p>
                   Designed and developed a live MERN (MongoDB, Express, React,
@@ -38,7 +38,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>WORDPRESS</Timeline.Time>
-              <Timeline.Title>Ecommerence Website (LIVE)</Timeline.Title>
+              <Timeline.Title className="text-white">Ecommerence Website (LIVE)</Timeline.Title>
               <Timeline.Body>
                 <p>
                   Website named as NowBuyTime.com is a dynamic and expert
@@ -54,7 +54,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>CHEN Stack</Timeline.Time>
-              <Timeline.Title>
+              <Timeline.Title className="text-white">
                 Talentics Full Stack Freelancing website
               </Timeline.Title>
               <Timeline.Body>
@@ -73,7 +73,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>GAME DEVELOPMENT</Timeline.Time>
-              <Timeline.Title>Console based Game Development</Timeline.Title>
+              <Timeline.Title className="text-white">Console based Game Development</Timeline.Title>
               <Timeline.Body>
                 <p>
                   Created multiple console-based games with the assistance of
@@ -88,7 +88,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>APP DEVELOPMENT</Timeline.Time>
-              <Timeline.Title>Digital Freight MarketPlace Apps</Timeline.Title>
+              <Timeline.Title className="text-white">Digital Freight MarketPlace Apps</Timeline.Title>
               <Timeline.Body>
                 <p>
                   Worked with a premium Freight Marketplace company, and these
@@ -103,7 +103,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>APP DEVELOPMENT</Timeline.Time>
-              <Timeline.Title>AsaanRozgar Flutter App</Timeline.Title>
+              <Timeline.Title className="text-white">AsaanRozgar Flutter App</Timeline.Title>
               <Timeline.Body>
                 <p>
                   Developed an accounting application targeting small startups
@@ -120,7 +120,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>APP DEVELOPMENT</Timeline.Time>
-              <Timeline.Title>
+              <Timeline.Title className="text-white">
                 Balti Flutter App ( Flutter, Firebase, AWS, MongoDB )
               </Timeline.Title>
               <Timeline.Body>
@@ -137,7 +137,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>APP DEVELOPMENT</Timeline.Time>
-              <Timeline.Title>
+              <Timeline.Title className="text-white">
                 PetsWala Flutter App ( Flutter, MongoDB, Firebase )
               </Timeline.Title>
               <Timeline.Body>
@@ -157,7 +157,7 @@ export default function VerticalTimeline({ inView }) {
           <Timeline.Item>
             <Timeline.Content>
               <Timeline.Time>Data Analysis And Machine Learning</Timeline.Time>
-              <Timeline.Title>
+              <Timeline.Title className="text-white">
                 Expertise in Machine Learning, OpenAI Integration, SAAS
                 Websites, Business Data Analysis, and Recommender Systems
               </Timeline.Title>

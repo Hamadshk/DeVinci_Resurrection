@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faLinkedin, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import logoImg from "../assets/logoFinal.png";
-
+import Image from 'next/image';
 export default function FooterWithSocialMediaIcons() {
     return (
-        <footer className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-t border-slate-700/50">
+        <footer className="border-t border-slate-700/50">
             <div className="max-w-screen-xl mx-auto px-4 py-16 lg:px-6">
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -17,10 +17,11 @@ export default function FooterWithSocialMediaIcons() {
                             <div className="relative">
                                 <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full opacity-30 blur-sm"></div>
                                 <div className="relative bg-white backdrop-blur-sm rounded-full p-2 border border-cyan-500/30">
-                                    <img
+                                    <Image
                                         alt="DeVinci Codes"
                                         src={logoImg}
-                                        width="150"
+                                        width={150}
+                                        height={32}
                                         className="h-8 w-auto"
                                     />
                                 </div>
@@ -59,10 +60,10 @@ export default function FooterWithSocialMediaIcons() {
                         </h3>
                         <ul className="space-y-3">
                             {[
-                                { href: "https://devinci.codes", label: "Home" },
+                                { href: "https://devincicodes.com", label: "Home" },
                                 { href: "#about", label: "About" },
                                 { href: "#skills", label: "Services" },
-                                { href: "#portfolio", label: "Portfolio" },
+                                { href: "#companies", label: "Our Clients" },
                                 { href: "#vision", label: "Our Vision" },
                                 { href: "#contact", label: "Contact" },
                             ].map((link, index) => (
@@ -89,8 +90,8 @@ export default function FooterWithSocialMediaIcons() {
                         </h3>
                         <ul className="space-y-3 mb-6">
                             {[
-                                { href: "https://www.instagram.com/devincicodes", label: "Instagram", icon: faInstagram },
-                                { href: "https://www.linkedin.com/company/devincicodes", label: "LinkedIn", icon: faLinkedin },
+                                { href: "https://www.instagram.com/devincicodes/", label: "Instagram", icon: faInstagram },
+                                { href: "https://www.linkedin.com/company/devincicodes/", label: "LinkedIn", icon: faLinkedin },
                                 { href: "https://www.fiverr.com/devinci_codes", label: "Fiverr" },
                                 { href: "https://www.upwork.com/freelancers/~01e772708606ade468", label: "Upwork" },
                             ].map((social, index) => (
@@ -111,8 +112,8 @@ export default function FooterWithSocialMediaIcons() {
                         {/* Social Icons */}
                         <div className="flex space-x-4">
                             {[
-                                { href: "https://www.instagram.com/devincicodes", icon: faInstagram, color: "hover:text-pink-400" },
-                                { href: "https://www.linkedin.com/company/devincicodes", icon: faLinkedin, color: "hover:text-blue-400" },
+                                { href: "https://www.instagram.com/devincicodes/", icon: faInstagram, color: "hover:text-pink-400" },
+                                { href: "https://www.linkedin.com/company/devincicodes/", icon: faLinkedin, color: "hover:text-blue-400" },
                                 { href: "https://www.facebook.com/profile.php?id=61552020426746", icon: faFacebook, color: "hover:text-blue-500" },
                                 { href: "https://twitter.com/devincicodes", icon: faTwitter, color: "hover:text-sky-400" },
                             ].map((social, index) => (

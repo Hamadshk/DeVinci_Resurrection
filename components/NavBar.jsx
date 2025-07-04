@@ -111,14 +111,11 @@ export default function NavBar() {
                             {navItems.map((item, index) => {
                                 // Handle different link types safely
                                 const isExternalOrHash = item.href.startsWith('#') || item.href.startsWith('/');
-                                const linkProps = {
-                                    href: item.href,
-                                    key: item.id
-                                };
                                 
                                 return (
                                 <Link
-                                    {...linkProps}
+                                    key={item.id}
+                                    href={item.href}
                                     className={`relative group px-4 py-2 rounded-xl transition-all duration-300 ${
                                         activeSection === item.id || router.pathname === item.href
                                             ? 'text-cyan-300'

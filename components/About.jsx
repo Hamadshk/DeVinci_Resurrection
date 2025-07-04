@@ -5,7 +5,7 @@ import automation from "../assets/auto.jpg";
 
 const About = ({ inView }) => {
   return (
-    <div className={`about-section ${inView && "about-in-view"} bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden`}>
+    <div className={`about-section ${inView && "about-in-view"} relative overflow-hidden`}>
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute w-96 h-96 -top-48 -right-48 bg-gradient-to-r from-cyan-500/8 to-blue-500/8 rounded-full blur-3xl" />

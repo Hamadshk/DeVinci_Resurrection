@@ -4,9 +4,8 @@ import { faCalendar, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-ico
 
 const FreeConsultation = ({ className = "" }) => {
   const handleBookMeeting = () => {
-    // You can replace this with your actual booking system URL
-    // For example: Calendly, Acuity Scheduling, etc.
-    window.open('https://calendly.com/your-calendly-link', '_blank');
+    // Updated with your actual Calendly booking link
+    window.open('https://calendly.com/devincicodes-official/30min', '_blank');
   };
 
   const handleCallNow = () => {
@@ -18,38 +17,43 @@ const FreeConsultation = ({ className = "" }) => {
   };
 
   return (
-    <div className={`flex flex-col sm:flex-row gap-4 items-center justify-center ${className}`}>
-      {/* Primary CTA - Book Meeting */}
+    <div className={`flex items-center justify-center ${className}`}>
+      {/* Enhanced Rounded Consultation Button - Smaller Size */}
       <button
         onClick={handleBookMeeting}
-        className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform overflow-hidden"
+        className="group relative px-6 py-3 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-bold rounded-full shadow-xl hover:shadow-cyan-500/40 transition-all duration-500 hover:scale-105 transform overflow-hidden border border-cyan-400/30 hover:border-cyan-300/60"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="relative flex items-center gap-3">
-          <FontAwesomeIcon icon={faCalendar} className="text-lg" />
-          <span className="text-lg">Book Free Consultation</span>
-        </div>
-        <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
-      </button>
-
-      {/* Secondary CTAs */}
-      <div className="flex gap-3">
-        <button
-          onClick={handleCallNow}
-          className="group px-6 py-4 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-slate-600 hover:border-cyan-500"
-          title="Call Now"
-        >
-          <FontAwesomeIcon icon={faPhone} className="text-cyan-400 group-hover:text-cyan-300" />
-        </button>
+        {/* Animated Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
         
-        <button
-          onClick={handleEmail}
-          className="group px-6 py-4 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-slate-600 hover:border-cyan-500"
-          title="Send Email"
-        >
-          <FontAwesomeIcon icon={faEnvelope} className="text-cyan-400 group-hover:text-cyan-300" />
-        </button>
-      </div>
+        {/* Pulsing Ring Effect */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full opacity-20 group-hover:opacity-30 blur-lg transition-all duration-500 animate-pulse"></div>
+        
+        {/* Content Container */}
+        <div className="relative flex items-center gap-2 z-10">
+          <div className="relative">
+            <FontAwesomeIcon 
+              icon={faCalendar} 
+              className="text-base group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" 
+            />
+            <div className="absolute -inset-0.5 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300"></div>
+          </div>
+          <div className="flex flex-col items-start">
+            <span className="text-base font-bold tracking-wide">Book Free Consultation</span>
+            <span className="text-xs text-cyan-100 opacity-90 font-medium">30 min • No commitment</span>
+          </div>
+        </div>
+        
+        {/* Shimmer Effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 skew-x-12 rounded-full"></div>
+        
+        {/* Floating Particles Effect */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full">
+          <div className="absolute top-2 left-4 w-0.5 h-0.5 bg-white rounded-full animate-ping"></div>
+          <div className="absolute top-4 right-5 w-0.5 h-0.5 bg-cyan-200 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute bottom-2 left-6 w-0.5 h-0.5 bg-purple-200 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+        </div>
+      </button>
     </div>
   );
 };

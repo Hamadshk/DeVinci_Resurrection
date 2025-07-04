@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const features = [
   {
     name: "Innovation",
@@ -33,7 +35,7 @@ const features = [
 
 export default function Goals({ inView }) {
   return (
-    <div className={`bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 min-h-screen py-16 goals ${inView && "goals-in-view"}`}>
+    <div className={`min-h-screen py-16 goals ${inView && "goals-in-view"}`}>
       <div className="max-w-screen-xl mx-auto px-4 lg:px-6">
         <div className="max-w-screen-md mb-12">
           <h2 className="mb-6 text-5xl tracking-tight font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -81,44 +83,56 @@ export default function Goals({ inView }) {
           {/* Image Grid */}
           <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6">
             <div className="relative group overflow-hidden rounded-xl">
-              <img
-                loading="lazy"
-                src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0"
+              <Image
+                src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107"
                 alt="AI Innovation and Digital Networks"
+                width={1000}
+                height={600}
                 className="w-full h-48 object-cover rounded-xl group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+                quality={80}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent rounded-xl"></div>
               <div className="absolute bottom-3 left-3 text-white font-medium">AI Innovation</div>
             </div>
             
             <div className="relative group overflow-hidden rounded-xl">
-              <img
-                loading="lazy"
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0"
+              <Image
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
                 alt="Data Analytics and Technology"
+                width={1000}
+                height={600}
                 className="w-full h-48 object-cover rounded-xl group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+                quality={80}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent rounded-xl"></div>
               <div className="absolute bottom-3 left-3 text-white font-medium">Data Analytics</div>
             </div>
             
             <div className="relative group overflow-hidden rounded-xl">
-              <img
-                loading="lazy"
-                src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0"
+              <Image
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43"
                 alt="Digital Transformation"
+                width={1000}
+                height={600}
                 className="w-full h-48 object-cover rounded-xl group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+                quality={80}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent rounded-xl"></div>
               <div className="absolute bottom-3 left-3 text-white font-medium">Digital Solutions</div>
             </div>
             
             <div className="relative group overflow-hidden rounded-xl">
-              <img
-                loading="lazy"
-                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0"
+              <Image
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995"
                 alt="AI and Machine Learning Development"
+                width={1000}
+                height={600}
                 className="w-full h-48 object-cover rounded-xl group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+                quality={80}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent rounded-xl"></div>
               <div className="absolute bottom-3 left-3 text-white font-medium">AI Development</div>

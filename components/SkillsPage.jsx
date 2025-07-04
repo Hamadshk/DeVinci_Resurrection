@@ -317,7 +317,7 @@ export default function OptimizedSkillsPage() {
 
       <div 
         ref={containerRef} 
-        className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden smooth-scroll"
+        className="min-h-screen relative overflow-hidden smooth-scroll"
       >
         {/* Simplified Background Elements */}
         <motion.div 
