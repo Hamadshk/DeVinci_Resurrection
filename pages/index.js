@@ -13,6 +13,7 @@ const Contact = lazy(() => import("../components/Contact"));
 const Portfolio = lazy(() => import("../components/Portfolio"));
 const Goals = lazy(() => import("../components/Goals"));
 const TestimonialsCarousel = lazy(() => import("../components/TestimonialsCarousel"));
+const FreeConsultation = lazy(() => import("../components/FreeConsultation"));
 
 // Import components dynamically to avoid SSR issues
 const NavBar = dynamic(() => import("../components/NavBar"), { ssr: false });
@@ -82,54 +83,78 @@ const Home = () => {
     };
   }, [vantaEffect, isScrolling]);
 
-  // Optimized Vanta effect with performance settings
+  // Optimized Vanta effect with performance settings and attached lines
   const initVanta = useCallback(async () => {
     if (!mounted || !myRef.current || vantaEffect) return;
 
     try {
+      // Import THREE.js first, then Vanta
+      const THREE = await import('three');
+      window.THREE = THREE.default || THREE;
+      
       const NET = (await import("vanta/dist/vanta.net.min")).default;
       
       let initialWidth = 1600;
       let rateOfDecrease = 250;
       let currentWidth = window.innerWidth;
-      let pointsValue = Math.max(5, 10 - Math.trunc((initialWidth - currentWidth) / rateOfDecrease));
+      let pointsValue = Math.max(8, 15 - Math.trunc((initialWidth - currentWidth) / rateOfDecrease));
 
-      setVantaEffect(
-        NET({
-          el: myRef.current,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          scale: 1.0,
-          scaleMobile: 0.7,
-          color: 0x06B6D4,
-          backgroundColor: 0x0F172A,
-          spacing: 28,
-          points: Math.min(pointsValue, 8),
-          maxDistance: 20,
-          forceAnimate: false,
-          // Performance optimizations
-          showDots: false, // Remove dots for better performance
-          backgroundAlpha: 0.8, // Reduce background opacity
-        })
-      );
+      const vantaInstance = NET({
+        el: myRef.current,
+        THREE: window.THREE, // Explicitly pass THREE
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 0.8,
+        color: 0x06B6D4, // Cyan color for lines
+        backgroundColor: 0x0F172A, // Dark slate background
+        spacing: 30, // Closer spacing for more lines
+        points: Math.min(pointsValue, 12), // More points for more connections
+        maxDistance: 25, // Longer lines
+        showDots: true, // Show dots at connection points
+      });
+
+      setVantaEffect(vantaInstance);
+      console.log('Vanta effect with attached lines initialized successfully');
     } catch (error) {
       console.warn('Vanta effect failed to load:', error);
+      // Enhanced fallback with animated background
+      if (myRef.current) {
+        myRef.current.style.background = `
+          linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%),
+          radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%)
+        `;
+        myRef.current.style.backgroundSize = '100% 100%, 400px 400px, 400px 400px';
+        myRef.current.style.animation = 'gradientShift 15s ease infinite';
+      }
     }
   }, [mounted, vantaEffect]);
 
   useEffect(() => {
-    initVanta();
+    if (mounted) {
+      // Small delay to ensure DOM is ready
+      const timer = setTimeout(() => {
+        initVanta();
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
 
     return () => {
       if (vantaEffect) {
-        vantaEffect.destroy();
+        try {
+          vantaEffect.destroy();
+        } catch (error) {
+          console.warn('Error destroying Vanta effect:', error);
+        }
         setVantaEffect(null);
       }
     };
-  }, [initVanta]);
+  }, [mounted, initVanta]);
 
   // Optimized intersection observer options with better performance
   const observerOptions = useMemo(() => ({
@@ -198,12 +223,15 @@ const Home = () => {
         <div className="relative z-10">
           <NavBar />
           <section 
-            className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 flex items-center justify-center" 
+            className="pt-20 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 flex flex-col items-center justify-center gap-8" 
             style={{ 
               minHeight: 'calc(100vh - 80px)',
             }}
           >
             <Header />
+            <Suspense fallback={<LoadingSpinner />}>
+              <FreeConsultation className="mt-8" />
+            </Suspense>
           </section>
           <a
             href="#contact"

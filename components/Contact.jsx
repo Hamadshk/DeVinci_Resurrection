@@ -73,139 +73,223 @@ export default function Contact({ inView }) {
   }
   return (
     <form ref={form} className={`contact ${inView && "contact-in-view"}`}>
-      <div className={`isolate bg-white`}>
-        <div className="max-w-screen-md mb-8 lg:mb-8">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-blue-900 ">
-            Contact Us |
-          </h2>
-          <p className="text-gray-500 sm:text-xl dark:text-gray-400">
-            We treat customers, as if we are the customer!
-          </p>
-        </div>
-        {showAlert && (
-          <Alert color={alertColor} icon={HiInformationCircle}>
-            {alertMessage}
-          </Alert>
-        )}
-
-        <section className="text-gray-600 body-font relative">
-          <div className="container px-5 py-8 mx-auto flex sm:flex-nowrap flex-wrap">
-            <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-              <iframe
-                width="100%"
-                height="100%"
-                className="absolute inset-0"
-                title="map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27225.338882151!2d74.25636269870087!3d31.46458205130698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1697553236025!5m2!1sen!2s"
-                style={{ filter: "grayscale(1) contrast(1.2) opacity(0.4)" }}
-              ></iframe>
-              <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md text-small-z">
-                <div className="lg:w-1/2 px-6">
-                  <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">
-                    ADDRESS
-                  </h2>
-                  <p className="mt-1">Pakistan, Punjab, Lahore, Johar Town</p>
-                </div>
-                <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
-                  <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">
-                    EMAIL
-                  </h2>
-                  <a
-                    href="mailto:devincicodes.official@gmail.com "
-                    style={{ textDecoration: "underline" }}
-                  >
-                    devincicodes.official@gmail.com
-                  </a>
-                  <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">
-                    PHONE
-                  </h2>
-                  <a
-                    className="leading-relaxed flex gap-2"
-                    style={{
-                      color: "green",
-                      width: "fit-content",
-                      textDecoration: "underline",
-                    }}
-                    href="https://wa.me/+923230018893"
-                  >
-                    {" "}
-                    <img width={"16px"} src={image} alt="" /> +923230018893{" "}
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-              <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
-                Send us your message
-              </h2>
-              <p className="leading-relaxed mb-5 text-gray-600">
-                We are waiting for you, kindly make it short and precise!
-              </p>
-              <div className="relative mb-4">
-                <label
-                  htmlFor="name"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  Name
-                </label>
-                <input
-                  required
-                  type="text"
-                  id="name"
-                  onChange={(e) => controlForm(e)}
-                  value={inputFeilds.user_name}
-                  name="user_name"
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-              <div className="relative mb-4">
-                <label
-                  htmlFor="email"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  Email
-                </label>
-                <input
-                  required
-                  type="email"
-                  id="email"
-                  onChange={(e) => controlForm(e)}
-                  value={inputFeilds.user_email}
-                  name="user_email"
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-              <div className="relative mb-4">
-                <label
-                  htmlFor="message"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  Message
-                </label>
-                <textarea
-                  required
-                  id="message"
-                  name="message"
-                  onChange={(e) => controlForm(e)}
-                  value={inputFeilds.message}
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                ></textarea>
-              </div>
-              <button
-                disabled={showSpinner}
-                type="submit"
-                className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                style={{ background: "darkblue" }}
-                onClick={(e) => controlSendEmail(e)}
-              >
-                {showSpinner ? <Spinner /> : "Let's talk"}
-              </button>
-              <p className="text-xs text-gray-500 mt-3">
-                Expect reply in 1 or 2 buisness days.
-              </p>
+      <div className={`isolate bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 min-h-screen py-16`}>
+        <div className="max-w-screen-xl mx-auto px-4 lg:px-6">
+          <div className="max-w-screen-md mb-8 lg:mb-16">
+            <h2 className="mb-6 text-5xl tracking-tight font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              Contact Us
+            </h2>
+            <p className="text-slate-300 text-xl max-w-2xl leading-relaxed">
+              We treat customers as if we are the customer! Let's discuss your next big project.
+            </p>
+            
+            {/* Decorative Elements */}
+            <div className="flex items-center justify-center space-x-4 mt-8">
+              <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-cyan-500"></div>
+              <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
+              <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-cyan-500"></div>
             </div>
           </div>
-        </section>
+          
+          {showAlert && (
+            <div className={`mb-8 p-4 rounded-lg border ${
+              alertColor === 'info' 
+                ? 'bg-cyan-900/30 border-cyan-500/30 text-cyan-200' 
+                : 'bg-red-900/30 border-red-500/30 text-red-200'
+            }`}>
+              <div className="flex items-center space-x-2">
+                <HiInformationCircle className="text-lg" />
+                <span>{alertMessage}</span>
+              </div>
+            </div>
+          )}
+
+          <section className="text-slate-300 body-font relative">
+            <div className="container mx-auto flex sm:flex-nowrap flex-wrap gap-8">
+              {/* Map Section */}
+              <div className="lg:w-2/3 md:w-1/2 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden p-6 shadow-2xl">
+                <div className="relative h-96 rounded-lg overflow-hidden">
+                  {/* Primary Google Maps Iframe */}
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    className="absolute inset-0 rounded-lg"
+                    title="DeVinci Codes Location - Johar Town, Lahore"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.176234567891!2d74.25636269870087!3d31.46458205130698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1735948800000!5m2!1sen!2s"
+                    style={{ 
+                      filter: "brightness(0.8) contrast(1.2)",
+                      border: 0
+                    }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    sandbox="allow-scripts allow-same-origin allow-popups"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextElementSibling.style.display = 'block';
+                    }}
+                  ></iframe>
+                  
+                  {/* Fallback Static Map */}
+                  <div 
+                    className="absolute inset-0 rounded-lg bg-slate-700 flex items-center justify-center"
+                    style={{ display: 'none' }}
+                  >
+                    <div className="text-center p-8">
+                      <div className="mb-4">
+                        <svg className="w-16 h-16 mx-auto text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Our Location</h3>
+                      <p className="text-slate-300 mb-4">Johar Town, Lahore, Punjab, Pakistan</p>
+                      <a
+                        href="https://maps.google.com/?q=Johar+Town,+Lahore,+Punjab,+Pakistan"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg transition-colors"
+                      >
+                        <span>View on Google Maps</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Contact Info Cards */}
+                <div className="mt-6 space-y-4">
+                  <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30">
+                    <h3 className="font-semibold text-cyan-400 tracking-wide text-sm uppercase mb-2">
+                      Address
+                    </h3>
+                    <p className="text-slate-300">Pakistan, Punjab, Lahore, Johar Town</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30">
+                      <h3 className="font-semibold text-cyan-400 tracking-wide text-sm uppercase mb-2">
+                        Email
+                      </h3>
+                      <a
+                        href="mailto:devincicodes.official@gmail.com"
+                        className="text-blue-400 hover:text-blue-300 transition-colors underline decoration-blue-500/50"
+                      >
+                        devincicodes.official@gmail.com
+                      </a>
+                    </div>
+                    
+                    <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30">
+                      <h3 className="font-semibold text-cyan-400 tracking-wide text-sm uppercase mb-2">
+                        WhatsApp
+                      </h3>
+                      <a
+                        className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors underline decoration-green-500/50"
+                        href="https://wa.me/+923230018893"
+                      >
+                        <img width={"16px"} src={image} alt="" />
+                        <span>+923230018893</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Contact Form */}
+              <div className="lg:w-1/3 md:w-1/2 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 shadow-2xl">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold text-white mb-2">
+                    Send us your message
+                  </h3>
+                  <p className="text-slate-400">
+                    We are waiting for you, kindly make it short and precise!
+                  </p>
+                </div>
+                
+                <div className="space-y-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-slate-300 mb-2"
+                    >
+                      Name
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      id="name"
+                      onChange={(e) => controlForm(e)}
+                      value={inputFeilds.user_name}
+                      name="user_name"
+                      className="w-full bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 outline-none"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-slate-300 mb-2"
+                    >
+                      Email
+                    </label>
+                    <input
+                      required
+                      type="email"
+                      id="email"
+                      onChange={(e) => controlForm(e)}
+                      value={inputFeilds.user_email}
+                      name="user_email"
+                      className="w-full bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 outline-none"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-slate-300 mb-2"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      required
+                      id="message"
+                      name="message"
+                      onChange={(e) => controlForm(e)}
+                      value={inputFeilds.message}
+                      rows={5}
+                      className="w-full bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 outline-none resize-none"
+                      placeholder="Tell us about your project..."
+                    ></textarea>
+                  </div>
+                  
+                  <button
+                    disabled={showSpinner}
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-cyan-500/25 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                    onClick={(e) => controlSendEmail(e)}
+                  >
+                    {showSpinner ? (
+                      <>
+                        <Spinner size="sm" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <span>Let's Talk 🚀</span>
+                    )}
+                  </button>
+                  
+                  <p className="text-xs text-slate-500 text-center">
+                    Expect reply in 1-2 business days.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </form>
   );

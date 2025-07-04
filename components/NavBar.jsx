@@ -49,7 +49,6 @@ export default function NavBar() {
         { href: '/projects', label: 'Projects', id: 'projects', icon: faRocket },
         { href: '#vision', label: 'Vision', id: 'vision', icon: faCog },
     ];
-
     return (
         <>
             {/* Navbar */}
@@ -84,7 +83,7 @@ export default function NavBar() {
                             <div className="relative">
                                 {/* Animated Logo Glow */}
                                 <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full opacity-30 group-hover:opacity-60 blur-sm transition-all duration-300 animate-pulse" />
-                                <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-full p-2 border border-cyan-500/30 group-hover:border-cyan-400/60 transition-all duration-300">
+                                <div className="relative bg-white backdrop-blur-sm rounded-full p-2 border border-cyan-500/30 group-hover:border-cyan-400/60 transition-all duration-300">
                                     <Image
                                         className="h-10 w-auto transition-transform duration-300 group-hover:scale-110"
                                         alt="DeVinci Codes Logo"
@@ -109,10 +108,17 @@ export default function NavBar() {
 
                         {/* Desktop Navigation */}
                         <div className="hidden lg:flex items-center space-x-1">
-                            {navItems.map((item, index) => (
+                            {navItems.map((item, index) => {
+                                // Handle different link types safely
+                                const isExternalOrHash = item.href.startsWith('#') || item.href.startsWith('/');
+                                const linkProps = {
+                                    href: item.href,
+                                    key: item.id
+                                };
+                                
+                                return (
                                 <Link
-                                    key={item.id}
-                                    href={item.href}
+                                    {...linkProps}
                                     className={`relative group px-4 py-2 rounded-xl transition-all duration-300 ${
                                         activeSection === item.id || router.pathname === item.href
                                             ? 'text-cyan-300'
@@ -147,7 +153,8 @@ export default function NavBar() {
                                             : 'w-0 group-hover:w-full bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-500'
                                     }`} />
                                 </Link>
-                            ))}
+                                );
+                            })}
                         </div>
 
                         {/* Contact Button */}

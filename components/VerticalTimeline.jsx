@@ -1,7 +1,6 @@
 "use client";
 
 import { Timeline } from "flowbite-react";
-import { HiCode } from "react-icons/hi";
 
 export default function VerticalTimeline({ inView }) {
   return (
@@ -21,7 +20,6 @@ export default function VerticalTimeline({ inView }) {
       <div className="py-8 px-4 lg:py-8 lg:px-6">
         <Timeline>
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>MERN STACK</Timeline.Time>
               <Timeline.Title>City Swapp (Live Website)</Timeline.Title>
@@ -38,7 +36,6 @@ export default function VerticalTimeline({ inView }) {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>WORDPRESS</Timeline.Time>
               <Timeline.Title>Ecommerence Website (LIVE)</Timeline.Title>
@@ -55,7 +52,6 @@ export default function VerticalTimeline({ inView }) {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>CHEN Stack</Timeline.Time>
               <Timeline.Title>
@@ -75,7 +71,6 @@ export default function VerticalTimeline({ inView }) {
           </Timeline.Item>
 
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>GAME DEVELOPMENT</Timeline.Time>
               <Timeline.Title>Console based Game Development</Timeline.Title>
@@ -91,7 +86,6 @@ export default function VerticalTimeline({ inView }) {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>APP DEVELOPMENT</Timeline.Time>
               <Timeline.Title>Digital Freight MarketPlace Apps</Timeline.Title>
@@ -107,7 +101,6 @@ export default function VerticalTimeline({ inView }) {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>APP DEVELOPMENT</Timeline.Time>
               <Timeline.Title>AsaanRozgar Flutter App</Timeline.Title>
@@ -125,7 +118,6 @@ export default function VerticalTimeline({ inView }) {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>APP DEVELOPMENT</Timeline.Time>
               <Timeline.Title>
@@ -143,7 +135,6 @@ export default function VerticalTimeline({ inView }) {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>APP DEVELOPMENT</Timeline.Time>
               <Timeline.Title>
@@ -164,7 +155,6 @@ export default function VerticalTimeline({ inView }) {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point icon={HiCode} />
             <Timeline.Content>
               <Timeline.Time>Data Analysis And Machine Learning</Timeline.Time>
               <Timeline.Title>
