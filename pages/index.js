@@ -141,7 +141,7 @@ const Home = () => {
         </section>
       </Suspense>
 
-      <Suspense fallback={<LoadingSpinner />}>
+      {/* <Suspense fallback={<LoadingSpinner />}>
         <section
           id="timeline"
           ref={timelineRef}
@@ -149,7 +149,7 @@ const Home = () => {
         >
           <VerticalTimeline inView={timelineInView} />
         </section>
-      </Suspense>
+      </Suspense> */}
 
       <Suspense fallback={<LoadingSpinner />}>
         <section
