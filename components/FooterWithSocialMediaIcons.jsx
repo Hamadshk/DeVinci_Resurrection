@@ -5,9 +5,26 @@ import { faInstagram, faLinkedin, faFacebook, faTwitter } from '@fortawesome/fre
 import { faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import logoImg from "../assets/logoFinal.png";
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+
 export default function FooterWithSocialMediaIcons() {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        // Ensure footer renders after main content
+        const timer = setTimeout(() => {
+            setIsLoaded(true);
+        }, 200);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (!isLoaded) {
+        return null;
+    }
+
     return (
-        <footer className="border-t border-slate-700/50">
+        <footer className="border-t border-slate-700/50 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             <div className="max-w-screen-xl mx-auto px-4 py-16 lg:px-6">
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -38,11 +55,19 @@ export default function FooterWithSocialMediaIcons() {
                         {/* Contact Info */}
                         <div className="space-y-3">
                             <div className="flex items-center space-x-3 text-slate-400">
-                                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-cyan-400" />
+                                <FontAwesomeIcon 
+                                    icon={faMapMarkerAlt} 
+                                    className="text-cyan-400" 
+                                    style={{ width: '14px', height: '14px' }}
+                                />
                                 <span>Johar Town, Lahore, Punjab, Pakistan</span>
                             </div>
                             <div className="flex items-center space-x-3 text-slate-400">
-                                <FontAwesomeIcon icon={faEnvelope} className="text-cyan-400" />
+                                <FontAwesomeIcon 
+                                    icon={faEnvelope} 
+                                    className="text-cyan-400"
+                                    style={{ width: '14px', height: '14px' }}
+                                />
                                 <a href="mailto:devincicodes.official@gmail.com" className="hover:text-cyan-300 transition-colors">
                                     devincicodes.official@gmail.com
                                 </a>
@@ -124,7 +149,11 @@ export default function FooterWithSocialMediaIcons() {
                                     rel="noopener noreferrer"
                                     className={`w-10 h-10 bg-slate-800/50 border border-slate-600/50 rounded-lg flex items-center justify-center text-slate-400 ${social.color} transition-all duration-200 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/25`}
                                 >
-                                    <FontAwesomeIcon icon={social.icon} className="text-lg" />
+                                    <FontAwesomeIcon 
+                                        icon={social.icon} 
+                                        className="text-lg"
+                                        style={{ width: '16px', height: '16px' }}
+                                    />
                                 </a>
                             ))}
                         </div>

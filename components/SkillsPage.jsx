@@ -1,5 +1,7 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+import logo from "../public/images/logos/logo.png"; // Adjust path as necessary
 import {
   faPhone,
   faPhoneFlip,
@@ -357,7 +359,16 @@ export default function OptimizedSkillsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="relative">
-                <FontAwesomeIcon icon={faRobot} className="text-7xl text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text" />
+                <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                  <Image 
+                    src={logo} 
+                    alt="DeVinci Codes Logo" 
+                    width={128}
+                    height={128}
+                    className="object-contain"
+                    priority
+                  />
+                </div>
                 <div className="absolute -inset-4 border-2 border-cyan-400/20 rounded-full" />
               </div>
             </motion.div>
@@ -432,38 +443,121 @@ export default function OptimizedSkillsPage() {
 
           {/* Testimonials Section */}
 
-          {/* Simplified Call to Action */}
+          {/* Enhanced Call to Action with Robot Background Images */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3, margin: "100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center relative"
+            className="text-center relative overflow-hidden"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 rounded-3xl opacity-20 blur-sm" />
-            <div className="relative bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 rounded-3xl p-12 border border-slate-700/50 backdrop-blur-sm">
-              <FontAwesomeIcon icon={faRobot} className="text-8xl text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text mb-8" />
+            
+            <div className="relative bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 rounded-3xl p-12 border border-slate-700/50 backdrop-blur-sm overflow-hidden">
+              {/* Background Dollar Signs Only */}
+              <div className="absolute inset-0 pointer-events-none">
+                {/* Dollar Sign - top left */}
+                <div className="absolute top-8 left-16 w-16 h-16 opacity-3">
+                  <svg viewBox="0 0 100 100" className="w-full h-full text-green-400">
+                    <path d="M50 10 L50 20 M50 80 L50 90 M40 25 Q30 25 30 35 Q30 45 40 45 L60 45 Q70 45 70 55 Q70 65 60 65 L35 65 M35 25 L65 25" 
+                          stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                
+                {/* Dollar Sign - top center */}
+                <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-20 h-20 opacity-2">
+                  <svg viewBox="0 0 100 100" className="w-full h-full text-green-500">
+                    <path d="M50 10 L50 20 M50 80 L50 90 M40 25 Q30 25 30 35 Q30 45 40 45 L60 45 Q70 45 70 55 Q70 65 60 65 L35 65 M35 25 L65 25" 
+                          stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                
+                {/* Dollar Sign - top right */}
+                <div className="absolute top-8 right-16 w-14 h-14 opacity-3">
+                  <svg viewBox="0 0 100 100" className="w-full h-full text-green-300">
+                    <path d="M50 10 L50 20 M50 80 L50 90 M40 25 Q30 25 30 35 Q30 45 40 45 L60 45 Q70 45 70 55 Q70 65 60 65 L35 65 M35 25 L65 25" 
+                          stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                
+                {/* Dollar Sign - center left */}
+                <div className="absolute left-8 top-1/2 transform -translate-y-1/2 w-18 h-18 opacity-2">
+                  <svg viewBox="0 0 100 100" className="w-full h-full text-green-400">
+                    <path d="M50 10 L50 20 M50 80 L50 90 M40 25 Q30 25 30 35 Q30 45 40 45 L60 45 Q70 45 70 55 Q70 65 60 65 L35 65 M35 25 L65 25" 
+                          stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                
+                {/* Dollar Sign - center right */}
+                <div className="absolute right-8 top-1/2 transform -translate-y-1/2 w-18 h-18 opacity-2">
+                  <svg viewBox="0 0 100 100" className="w-full h-full text-green-500">
+                    <path d="M50 10 L50 20 M50 80 L50 90 M40 25 Q30 25 30 35 Q30 45 40 45 L60 45 Q70 45 70 55 Q70 65 60 65 L35 65 M35 25 L65 25" 
+                          stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                
+                {/* Dollar Sign - bottom left */}
+                <div className="absolute bottom-8 left-20 w-16 h-16 opacity-3">
+                  <svg viewBox="0 0 100 100" className="w-full h-full text-green-300">
+                    <path d="M50 10 L50 20 M50 80 L50 90 M40 25 Q30 25 30 35 Q30 45 40 45 L60 45 Q70 45 70 55 Q70 65 60 65 L35 65 M35 25 L65 25" 
+                          stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                
+                {/* Dollar Sign - bottom center */}
+                <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 w-14 h-14 opacity-2">
+                  <svg viewBox="0 0 100 100" className="w-full h-full text-green-400">
+                    <path d="M50 10 L50 20 M50 80 L50 90 M40 25 Q30 25 30 35 Q30 45 40 45 L60 45 Q70 45 70 55 Q70 65 60 65 L35 65 M35 25 L65 25" 
+                          stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                
+                {/* Dollar Sign - bottom right */}
+                <div className="absolute bottom-8 right-20 w-16 h-16 opacity-3">
+                  <svg viewBox="0 0 100 100" className="w-full h-full text-green-500">
+                    <path d="M50 10 L50 20 M50 80 L50 90 M40 25 Q30 25 30 35 Q30 45 40 45 L60 45 Q70 45 70 55 Q70 65 60 65 L35 65 M35 25 L65 25" 
+                          stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                
+                {/* Subtle grid pattern */}
+                <div 
+                  className="absolute inset-0 opacity-2"
+                  style={{
+                    backgroundImage: `
+                      linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+                      linear-gradient(180deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
+                    `,
+                    backgroundSize: "50px 50px"
+                  }}
+                />
+              </div>
               
-              <h3 className="text-4xl md:text-5xl font-bold text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text mb-6">
-                Transform Your Business with AI
-              </h3>
-              
-              <p className="text-slate-300 text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
-                Discover how our AI agents can revolutionize your operations and boost revenue
-                around the clock. Start with a free consultation today.
-              </p>
-              
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-bold py-5 px-12 rounded-2xl transition-all duration-200 shadow-lg text-lg will-change-transform"
-              >
-                <span className="flex items-center">
-                  <FontAwesomeIcon icon={faSparkles} className="mr-3" />
-                  Schedule Free Consultation
-                  <FontAwesomeIcon icon={faArrowRight} className="ml-3" />
-                </span>
-              </motion.button>
+              {/* Content */}
+              <div className="relative z-10">
+                <FontAwesomeIcon icon={faRobot} className="text-8xl text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text mb-8" />
+                
+                <h3 className="text-4xl md:text-5xl font-bold text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text mb-6">
+                  Transform Your Business with AI
+                </h3>
+                
+                <p className="text-slate-300 text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
+                  Discover how our AI agents can revolutionize your operations and boost revenue
+                  around the clock. Start with a free consultation today.
+                </p>
+                
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-bold py-5 px-12 rounded-2xl transition-all duration-200 shadow-lg text-lg will-change-transform hover:shadow-2xl hover:shadow-cyan-500/25"
+                >
+                  <span className="flex items-center">
+                    <FontAwesomeIcon icon={faSparkles} className="mr-3" />
+                    Schedule Free Consultation
+                    <FontAwesomeIcon icon={faArrowRight} className="ml-3" />
+                  </span>
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         </section>

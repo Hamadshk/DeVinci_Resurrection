@@ -204,53 +204,62 @@ const TestimonialsCarousel = ({ inView }) => {
           </p>
         </div>
 
-        {/* Achievements Section - Fixed Grid Layout */}
+        {/* Achievements Section - Improved Layout */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-10 max-w-5xl mx-auto">
           {achievements.map((achievement, index) => (
             <div 
               key={index}
-              className={`relative group bg-gradient-to-br from-slate-800/60 via-slate-800/40 to-slate-900/60 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105 w-full aspect-square flex flex-col justify-between hover:shadow-xl hover:shadow-cyan-500/10 ${
+              className={`relative group bg-gradient-to-br from-slate-800/70 via-slate-800/50 to-slate-900/70 backdrop-blur-sm rounded-xl p-4 md:p-5 border border-slate-600/40 hover:border-cyan-400/60 transition-all duration-300 hover:transform hover:scale-105 w-full min-h-[140px] md:min-h-[160px] flex flex-col justify-center items-center text-center space-y-3 hover:shadow-xl hover:shadow-cyan-500/10 ${
                 inView ? 'animate-fade-in' : ''
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Header with Logo and Platform - Reduced spacing */}
-              <div className="flex flex-col items-center text-center space-y-1">
-                <div className="flex-shrink-0 p-2 md:p-2.5 rounded-lg bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-cyan-400/30 shadow-lg">
-                  <Image
-                    src={achievement.logo}
-                    alt={`${achievement.platform} logo`}
-                    width={20}
-                    height={20}
-                    className="w-5 h-5 md:w-6 md:h-6"
-                  />
+              {/* Logo and Icon Container */}
+              <div className="flex flex-col items-center space-y-2">
+                <div className="relative">
+                  <div className="flex-shrink-0 p-2.5 md:p-3 rounded-xl bg-gradient-to-br from-cyan-500/25 via-blue-500/25 to-purple-500/25 backdrop-blur-sm border border-cyan-400/40 shadow-lg group-hover:shadow-cyan-400/20 transition-all duration-300">
+                    <Image
+                      src={achievement.logo}
+                      alt={`${achievement.platform} logo`}
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 md:w-7 md:h-7 filter brightness-110"
+                    />
+                  </div>
+                  {/* Small icon overlay */}
+                  <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 text-white">
+                    {React.cloneElement(achievement.icon, { className: "w-3 h-3" })}
+                  </div>
                 </div>
-                <p className="text-xs font-medium text-cyan-300 uppercase tracking-wide">
+                <p className="text-xs font-semibold text-cyan-300 uppercase tracking-wider">
                   {achievement.platform}
                 </p>
               </div>
               
-              {/* Title and Metric - Reduced spacing */}
-              <div className="text-center space-y-0.5">
-                <h3 className="text-sm md:text-base font-semibold bg-gradient-to-r from-white via-cyan-100 to-blue-100 bg-clip-text text-transparent leading-tight">
+              {/* Content */}
+              <div className="text-center space-y-1">
+                <h3 className="text-sm md:text-base font-bold bg-gradient-to-r from-white via-cyan-50 to-blue-50 bg-clip-text text-transparent leading-tight">
                   {achievement.title}
                 </h3>
-                <p className="text-xs md:text-sm font-medium bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <p className="text-xs md:text-sm font-semibold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
                   {achievement.metric}
                 </p>
               </div>
               
               {/* Enhanced Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-all duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/15 via-blue-500/15 to-purple-500/15 opacity-0 group-hover:opacity-100 rounded-xl transition-all duration-300" />
               
-              {/* Subtle glow effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-purple-500/5 opacity-60" />
+              {/* Border glow effect */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-500/10 opacity-50 group-hover:opacity-80 transition-opacity duration-300" />
+              
+              {/* Corner accent */}
+              <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           ))}
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-3xl mx-auto px-8 md:px-12">
           <div 
             className="relative overflow-hidden rounded-xl bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 pt-2 pb-4 px-3"
             onMouseEnter={handleMouseEnter}
@@ -290,17 +299,17 @@ const TestimonialsCarousel = ({ inView }) => {
               </div>
             </div>
 
-            {/* Navigation Arrows - Adjusted positioning */}
+            {/* Navigation Arrows - Fixed positioning */}
             <button 
               onClick={prevSlide}
-              className="absolute -left-4 md:-left-8 top-1/2 transform -translate-y-1/2 bg-slate-800/90 hover:bg-slate-700/90 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-slate-600/50 z-20 shadow-lg"
+              className="absolute -left-6 md:-left-10 top-1/2 transform -translate-y-1/2 bg-slate-800/95 hover:bg-slate-700/95 text-white p-2.5 md:p-3 rounded-full transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-slate-600/50 z-30 shadow-xl hover:shadow-cyan-500/20"
             >
               <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
             </button>
             
             <button 
               onClick={nextSlide}
-              className="absolute -right-4 md:-right-8 top-1/2 transform -translate-y-1/2 bg-slate-800/90 hover:bg-slate-700/90 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-slate-600/50 z-20 shadow-lg"
+              className="absolute -right-6 md:-right-10 top-1/2 transform -translate-y-1/2 bg-slate-800/95 hover:bg-slate-700/95 text-white p-2.5 md:p-3 rounded-full transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-slate-600/50 z-30 shadow-xl hover:shadow-cyan-500/20"
             >
               <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
             </button>

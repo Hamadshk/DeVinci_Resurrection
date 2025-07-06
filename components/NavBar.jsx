@@ -164,8 +164,7 @@ export default function NavBar() {
                                             icon={faPhone} 
                                             className="text-sm animate-bounce group-hover:animate-pulse" 
                                         />
-                                        <span className="hidden sm:inline">Contact AI</span>
-                                        <span className="sm:hidden">AI</span>
+                                        <span className="hidden sm:inline">Contact</span>
                                     </div>
                                     {/* Animated Background Particles */}
                                     <div className="absolute inset-0 rounded-full overflow-hidden">

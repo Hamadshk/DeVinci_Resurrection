@@ -29,10 +29,17 @@ const LoadingSpinner = () => (
 
 const Home = () => {
   const [mounted, setMounted] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const myRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
+    // Ensure all critical components are loaded before showing content
+    const timer = setTimeout(() => {
+      setIsInitialLoading(false);
+    }, 150);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Optimized intersection observer options with better performance
@@ -51,19 +58,28 @@ const Home = () => {
   const [portfolioRef, portfolioInView] = useInView(observerOptions);
   const [goalsRef, goalsInView] = useInView(observerOptions);
 
-  if (!mounted) {
-    return null;
+  if (!mounted || isInitialLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
+        <div className="flex flex-col items-center">
+          <div className="w-8 h-8 border-2 border-slate-700 border-t-cyan-500 rounded-full animate-spin"></div>
+          <span className="text-slate-400 text-sm mt-2">Preparing your experience...</span>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div 
-      className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 min-h-screen"
+      className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 min-h-screen opacity-0 animate-fade-in"
       style={{
         // Optimize for smooth scrolling
         scrollBehavior: 'smooth',
         WebkitOverflowScrolling: 'touch',
         overflowY: 'auto',
         height: '100vh',
+        animationDelay: '0.1s',
+        animationFillMode: 'forwards',
       }}
     >
       <section 

@@ -141,29 +141,6 @@ const About = ({ inView }) => {
             </div>
           </div>
         </div>
-
-        {/* Stats Section */}
-        <div className="mt-20 max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { number: "24/7", label: "AI Automation", gradient: "from-cyan-400 to-blue-500" },
-              { number: "300%", label: "ROI Increase", gradient: "from-blue-500 to-purple-600" },
-              { number: "50+", label: "Businesses Automated", gradient: "from-purple-600 to-pink-500" }
-            ].map((stat, index) => (
-              <div key={index} className="text-center relative group">
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${stat.gradient} rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300 blur-sm`} />
-                <div className="relative bg-slate-900/50 rounded-2xl p-6 border border-slate-700/50 backdrop-blur-sm">
-                  <div className={`text-4xl font-bold text-transparent bg-gradient-to-r ${stat.gradient} bg-clip-text mb-2`}>
-                    {stat.number}
-                  </div>
-                  <div className="text-slate-300 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );

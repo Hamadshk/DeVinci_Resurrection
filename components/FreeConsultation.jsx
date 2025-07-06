@@ -13,7 +13,7 @@ const FreeConsultation = ({ className = "" }) => {
   };
 
   const handleEmail = () => {
-    window.open('mailto:your-email@example.com?subject=Free Consultation Request', '_self'); // Replace with your email
+    window.open('mailto:devincicodes.official@gmail.com?subject=Free Consultation Request', '_self'); // Replace with your email
   };
 
   return (
