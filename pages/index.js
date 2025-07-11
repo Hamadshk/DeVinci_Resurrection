@@ -2,6 +2,7 @@ import { lazy, Suspense, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect, useRef } from "react";
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { initPerformanceOptimizations } from "../utils/performanceOptimizer";
@@ -75,18 +76,37 @@ const Home = () => {
   }
 
   return (
-    <div 
-      className="bg-pure-black min-h-screen opacity-0 animate-fade-in"
-      style={{
-        // Optimize for smooth scrolling with hardware acceleration
-        WebkitOverflowScrolling: 'touch',
-        overflowY: 'auto',
-        animationDelay: '0.1s',
-        animationFillMode: 'forwards',
-        transform: 'translate3d(0, 0, 0)', // Force hardware acceleration
-        backfaceVisibility: 'hidden',
-      }}
-    >
+    <>
+      <Head>
+        <title>DeVinci Resurrection - AI & Automation Solutions</title>
+        <meta name="description" content="Professional AI and automation solutions for modern businesses" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Favicon and app icons */}
+        <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-chrome-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icons/android-chrome-512x512.png" />
+        <link rel="manifest" href="/icons/site.webmanifest" />
+        
+        {/* Theme color for mobile browsers */}
+        <meta name="theme-color" content="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+      </Head>
+      <div 
+        className="bg-pure-black min-h-screen opacity-0 animate-fade-in"
+        style={{
+          // Optimize for smooth scrolling with hardware acceleration
+          WebkitOverflowScrolling: 'touch',
+          overflowY: 'auto',
+          animationDelay: '0.1s',
+          animationFillMode: 'forwards',
+          transform: 'translate3d(0, 0, 0)', // Force hardware acceleration
+          backfaceVisibility: 'hidden',
+        }}
+      >
       <section 
         ref={myRef} 
         className="home-page h-screen relative overflow-hidden bg-pure-black"
@@ -189,6 +209,7 @@ const Home = () => {
         </section>
       </Suspense>
     </div>
+    </>
   );
 };
 
