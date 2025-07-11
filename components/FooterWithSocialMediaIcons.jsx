@@ -24,16 +24,22 @@ export default function FooterWithSocialMediaIcons() {
     }
 
     return (
-        <footer className="border-t border-slate-700/50 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-            <div className="max-w-screen-xl mx-auto px-4 py-16 lg:px-6">
+        <footer className="bg-pure-black border-t border-cyber-cyan/30 opacity-0 animate-fade-in relative overflow-hidden" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+            {/* Background grid */}
+            <div className="absolute inset-0 bg-cyber-grid bg-[length:50px_50px] opacity-10" />
+            
+            {/* Geometric corner accents */}
+            <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-cyber-cyan opacity-20" />
+            <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-cyber-cyan opacity-20" />
+            
+            <div className="max-w-screen-xl mx-auto px-4 py-16 lg:px-6 relative z-10">
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     {/* Company Info */}
                     <div className="lg:col-span-2">
                         <div className="flex items-center space-x-3 mb-6">
                             <div className="relative">
-                                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full opacity-30 blur-sm"></div>
-                                <div className="relative bg-white backdrop-blur-sm rounded-full p-2 border border-cyan-500/30">
+                                <div className="relative bg-cyber-cyan backdrop-blur-sm rounded-lg p-2 border border-cyber-cyan/50">
                                     <Image
                                         alt="DeVinci Codes"
                                         src={logoImg}
@@ -42,33 +48,34 @@ export default function FooterWithSocialMediaIcons() {
                                         className="h-8 w-auto"
                                     />
                                 </div>
+                                <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyber-cyan rounded-full animate-pulse" />
                             </div>
                         </div>
-                        <p className="text-slate-300 text-lg mb-4 font-medium">
+                        <p className="text-cyber-white text-lg mb-4 font-medium font-inter">
                             Your vision, our code
                         </p>
-                        <p className="text-slate-400 mb-6 leading-relaxed">
+                        <p className="text-cyber-white/80 mb-6 leading-relaxed font-inter">
                             DeVinci Codes is devoted to providing innovative digital solutions that drive transformation 
                             and create exceptional user experiences. We bridge the gap between ideas and reality.
                         </p>
                         
                         {/* Contact Info */}
                         <div className="space-y-3">
-                            <div className="flex items-center space-x-3 text-slate-400">
+                            <div className="flex items-center space-x-3 text-cyber-white/80">
                                 <FontAwesomeIcon 
                                     icon={faMapMarkerAlt} 
-                                    className="text-cyan-400" 
+                                    className="text-cyber-cyan" 
                                     style={{ width: '14px', height: '14px' }}
                                 />
-                                <span>Johar Town, Lahore, Punjab, Pakistan</span>
+                                <span className="font-inter">Johar Town, Lahore, Punjab, Pakistan</span>
                             </div>
-                            <div className="flex items-center space-x-3 text-slate-400">
+                            <div className="flex items-center space-x-3 text-cyber-white/80">
                                 <FontAwesomeIcon 
                                     icon={faEnvelope} 
-                                    className="text-cyan-400"
+                                    className="text-cyber-cyan"
                                     style={{ width: '14px', height: '14px' }}
                                 />
-                                <a href="mailto:devincicodes.official@gmail.com" className="hover:text-cyan-300 transition-colors">
+                                <a href="mailto:devincicodes.official@gmail.com" className="hover:text-cyber-cyan transition-colors font-inter">
                                     devincicodes.official@gmail.com
                                 </a>
                             </div>
@@ -77,9 +84,9 @@ export default function FooterWithSocialMediaIcons() {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-white font-semibold text-lg mb-6 flex items-center space-x-2">
-                            <div className="w-6 h-6 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white text-sm">🔗</span>
+                        <h3 className="text-cyber-white font-semibold text-lg mb-6 flex items-center space-x-2 font-inter">
+                            <div className="w-6 h-6 bg-cyber-cyan rounded-lg flex items-center justify-center">
+                                <span className="text-pure-black text-sm">🔗</span>
                             </div>
                             <span>Quick Links</span>
                         </h3>
@@ -95,9 +102,9 @@ export default function FooterWithSocialMediaIcons() {
                                 <li key={index}>
                                     <a 
                                         href={link.href} 
-                                        className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 flex items-center space-x-2 group"
+                                        className="text-cyber-white/80 hover:text-cyber-cyan transition-colors duration-200 flex items-center space-x-2 group font-inter"
                                     >
-                                        <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                        <div className="w-1.5 h-1.5 bg-cyber-cyan rounded-full group-hover:scale-125 transition-transform" />
                                         <span>{link.label}</span>
                                     </a>
                                 </li>
@@ -107,9 +114,9 @@ export default function FooterWithSocialMediaIcons() {
 
                     {/* Social Media */}
                     <div>
-                        <h3 className="text-white font-semibold text-lg mb-6 flex items-center space-x-2">
-                            <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white text-sm">🌐</span>
+                        <h3 className="text-cyber-white font-semibold text-lg mb-6 flex items-center space-x-2 font-inter">
+                            <div className="w-6 h-6 bg-cyber-cyan rounded-lg flex items-center justify-center">
+                                <span className="text-pure-black text-sm">🌐</span>
                             </div>
                             <span>Follow Us</span>
                         </h3>
@@ -125,9 +132,9 @@ export default function FooterWithSocialMediaIcons() {
                                         href={social.href} 
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 flex items-center space-x-2 group"
+                                        className="text-cyber-white/80 hover:text-cyber-cyan transition-colors duration-200 flex items-center space-x-2 group font-inter"
                                     >
-                                        <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                        <div className="w-1.5 h-1.5 bg-cyber-cyan rounded-full group-hover:scale-125 transition-transform" />
                                         <span>{social.label}</span>
                                     </a>
                                 </li>
@@ -137,17 +144,17 @@ export default function FooterWithSocialMediaIcons() {
                         {/* Social Icons */}
                         <div className="flex space-x-4">
                             {[
-                                { href: "https://www.instagram.com/devincicodes/", icon: faInstagram, color: "hover:text-pink-400" },
-                                { href: "https://www.linkedin.com/company/devincicodes/", icon: faLinkedin, color: "hover:text-blue-400" },
-                                { href: "https://www.facebook.com/profile.php?id=61552020426746", icon: faFacebook, color: "hover:text-blue-500" },
-                                { href: "https://twitter.com/devincicodes", icon: faTwitter, color: "hover:text-sky-400" },
+                                { href: "https://www.instagram.com/devincicodes/", icon: faInstagram, color: "hover:text-cyber-cyan" },
+                                { href: "https://www.linkedin.com/company/devincicodes/", icon: faLinkedin, color: "hover:text-cyber-cyan" },
+                                { href: "https://www.facebook.com/profile.php?id=61552020426746", icon: faFacebook, color: "hover:text-cyber-cyan" },
+                                { href: "https://twitter.com/devincicodes", icon: faTwitter, color: "hover:text-cyber-cyan" },
                             ].map((social, index) => (
                                 <a
                                     key={index}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`w-10 h-10 bg-slate-800/50 border border-slate-600/50 rounded-lg flex items-center justify-center text-slate-400 ${social.color} transition-all duration-200 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/25`}
+                                    className={`w-10 h-10 bg-glass-black border border-glass-white rounded-lg flex items-center justify-center text-cyber-white/80 ${social.color} transition-all duration-200 hover:border-cyber-cyan`}
                                 >
                                     <FontAwesomeIcon 
                                         icon={social.icon} 
@@ -161,23 +168,23 @@ export default function FooterWithSocialMediaIcons() {
                 </div>
 
                 {/* Divider */}
-                <div className="border-t border-slate-700/50 pt-8">
+                <div className="border-t border-cyber-cyan/30 pt-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div className="flex items-center space-x-2 text-slate-400 mb-4 md:mb-0">
+                        <div className="flex items-center space-x-2 text-cyber-white/80 mb-4 md:mb-0 font-inter">
                             <span>&copy; 2023 - {new Date().getFullYear()}</span>
                             <a 
                                 href="https://devinci.codes" 
-                                className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold hover:from-cyan-300 hover:to-blue-400 transition-all duration-200"
+                                className="text-cyber-cyan font-semibold hover:text-cyber-white transition-all duration-200"
                             >
                                 DeVinci Codes™
                             </a>
                             <span>• All rights reserved</span>
                         </div>
                         
-                        <div className="flex items-center space-x-2 text-sm text-slate-500">
-                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <div className="flex items-center space-x-2 text-sm text-cyber-white/60 font-inter">
+                            <div className="w-2 h-2 bg-cyber-cyan rounded-full animate-pulse" />
                             <span>Crafted with passion in Pakistan</span>
-                            <span className="text-green-400">🇵🇰</span>
+                            <span className="text-cyber-cyan">🇵🇰</span>
                         </div>
                     </div>
                 </div>

@@ -49,41 +49,30 @@ export default function NavBar() {
         { href: '/projects', label: 'Projects', id: 'projects', icon: faRocket },
         { href: '#vision', label: 'Vision', id: 'vision', icon: faCog },
     ];
+    
     return (
         <>
             {/* Navbar */}
             <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                 isScrolled 
-                    ? 'bg-slate-950/95 backdrop-blur-xl shadow-2xl shadow-cyan-500/10' 
+                    ? 'bg-pure-black/95 backdrop-blur-cyber border-b border-cyber-cyan/20' 
                     : 'bg-transparent'
             }`}>
-                {/* Animated Background Grid */}
+                {/* Minimalist grid background */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/5 via-transparent to-purple-900/5" />
-                    <div 
-                        className="absolute inset-0 opacity-20 animate-pulse"
-                        style={{
-                            backgroundImage: `
-                                linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px),
-                                linear-gradient(180deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
-                            `,
-                            backgroundSize: "30px 30px",
-                            animation: "grid-flow 20s linear infinite"
-                        }}
-                    />
+                    <div className="absolute inset-0 bg-cyber-grid bg-[length:30px_30px] opacity-10" />
                 </div>
 
-                {/* Glowing Border */}
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                {/* Clean top border */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-cyber-cyan/30" />
                 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-20">
                         {/* Logo Section */}
                         <Link href="/" className="flex items-center space-x-3 group">
                             <div className="relative">
-                                {/* Animated Logo Glow */}
-                                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full opacity-30 group-hover:opacity-60 blur-sm transition-all duration-300 animate-pulse" />
-                                <div className="relative bg-white backdrop-blur-sm rounded-full p-2 border border-cyan-500/30 group-hover:border-cyan-400/60 transition-all duration-300">
+                                {/* Clean logo container */}
+                                <div className="relative bg-white backdrop-blur-sm rounded-lg p-1 border border-cyber-cyan/30 group-hover:border-cyber-cyan/60 transition-all duration-300">
                                     <Image
                                         className="h-10 w-auto transition-transform duration-300 group-hover:scale-110"
                                         alt="DeVinci Codes Logo"
@@ -93,41 +82,32 @@ export default function NavBar() {
                                         priority
                                     />
                                 </div>
-                            </div>
-                            
-                            {/* Animated Text */}
-                            <div className="hidden md:block">
-                                {/* <div className="text-xl font-bold text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text group-hover:from-cyan-300 group-hover:via-blue-400 group-hover:to-purple-500 transition-all duration-300">
-                                    DeVinci Codes
-                                </div> */}
-                                {/* <div className="text-xs text-slate-400 group-hover:text-cyan-300 transition-colors duration-300 tracking-widest">
-                                    AI • AUTOMATION • FUTURE
-                                </div> */}
+                                {/* Subtle corner accent */}
+                                <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyber-cyan rounded-full opacity-60 group-hover:opacity-100 transition-opacity" />
                             </div>
                         </Link>
 
                         {/* Desktop Navigation */}
                         <div className="hidden lg:flex items-center space-x-1">
                             {navItems.map((item, index) => {
-                                // Handle different link types safely
                                 const isExternalOrHash = item.href.startsWith('#') || item.href.startsWith('/');
                                 
                                 return (
                                 <Link
                                     key={item.id}
                                     href={item.href}
-                                    className={`relative group px-4 py-2 rounded-xl transition-all duration-300 ${
+                                    className={`relative group px-4 py-2 rounded-lg transition-all duration-300 ${
                                         activeSection === item.id || router.pathname === item.href
-                                            ? 'text-cyan-300'
-                                            : 'text-slate-300 hover:text-cyan-400'
+                                            ? 'text-cyber-cyan border border-cyber-cyan/50'
+                                            : 'text-cyber-white hover:text-cyber-cyan border border-transparent hover:border-cyber-cyan/30'
                                     }`}
                                     style={{ animationDelay: `${index * 0.1}s` }}
                                 >
-                                    {/* Animated Background */}
-                                    <div className={`absolute inset-0 rounded-xl transition-all duration-300 ${
+                                    {/* Clean background */}
+                                    <div className={`absolute inset-0 rounded-lg transition-all duration-300 ${
                                         activeSection === item.id || router.pathname === item.href
-                                            ? 'bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-500/30'
-                                            : 'bg-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-500/10 group-hover:to-purple-600/10 group-hover:border group-hover:border-cyan-500/20'
+                                            ? 'bg-cyber-cyan/10'
+                                            : 'bg-transparent group-hover:bg-cyber-cyan/5'
                                     }`} />
                                     
                                     {/* Icon and Text */}
@@ -136,18 +116,18 @@ export default function NavBar() {
                                             icon={item.icon} 
                                             className={`text-sm transition-all duration-300 ${
                                                 activeSection === item.id || router.pathname === item.href
-                                                    ? 'text-cyan-400 animate-pulse'
-                                                    : 'group-hover:text-cyan-400 group-hover:animate-pulse'
+                                                    ? 'text-cyber-cyan'
+                                                    : 'group-hover:text-cyber-cyan'
                                             }`}
                                         />
-                                        <span className="font-medium tracking-wide">{item.label}</span>
+                                        <span className="font-medium tracking-wide font-inter">{item.label}</span>
                                     </div>
 
-                                    {/* Animated Underline */}
+                                    {/* Minimal underline */}
                                     <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 transition-all duration-300 ${
                                         activeSection === item.id || router.pathname === item.href
-                                            ? 'w-full bg-gradient-to-r from-cyan-400 to-purple-500'
-                                            : 'w-0 group-hover:w-full bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-500'
+                                            ? 'w-full bg-cyber-cyan'
+                                            : 'w-0 group-hover:w-full bg-cyber-cyan'
                                     }`} />
                                 </Link>
                                 );
@@ -157,18 +137,13 @@ export default function NavBar() {
                         {/* Contact Button */}
                         <div className="flex items-center space-x-4">
                             <a href="#contact" className="relative group">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 rounded-full opacity-70 group-hover:opacity-100 blur-sm transition-all duration-300 animate-pulse" />
-                                <button className="relative px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-700 text-white font-semibold rounded-full transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-cyan-500/25 border border-cyan-500/30">
+                                <button className="relative px-6 py-3 bg-pure-black border-2 border-cyber-cyan text-cyber-cyan font-semibold rounded-lg transition-all duration-300 group-hover:bg-cyber-cyan group-hover:text-pure-black font-inter">
                                     <div className="flex items-center space-x-2">
                                         <FontAwesomeIcon 
                                             icon={faPhone} 
-                                            className="text-sm animate-bounce group-hover:animate-pulse" 
+                                            className="text-sm" 
                                         />
                                         <span className="hidden sm:inline">Contact</span>
-                                    </div>
-                                    {/* Animated Background Particles */}
-                                    <div className="absolute inset-0 rounded-full overflow-hidden">
-                                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                     </div>
                                 </button>
                             </a>
@@ -176,7 +151,7 @@ export default function NavBar() {
                             {/* Mobile Menu Toggle */}
                             <button
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="lg:hidden relative p-2 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-cyan-500/30 text-cyan-400 hover:text-cyan-300 hover:border-cyan-400/50 transition-all duration-300"
+                                className="lg:hidden relative p-2 rounded-lg bg-pure-black border border-cyber-cyan/30 text-cyber-cyan hover:text-cyber-white hover:border-cyber-cyan/50 transition-all duration-300"
                             >
                                 <FontAwesomeIcon 
                                     icon={isMenuOpen ? faTimes : faBars} 
@@ -194,83 +169,34 @@ export default function NavBar() {
             }`}>
                 {/* Backdrop */}
                 <div 
-                    className="absolute inset-0 bg-slate-950/95 backdrop-blur-xl"
+                    className="absolute inset-0 bg-pure-black/95 backdrop-blur-cyber"
                     onClick={() => setIsMenuOpen(false)}
                 />
                 
-                {/* Menu Content */}
-                <div className={`absolute top-20 left-0 right-0 bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-xl border-b border-cyan-500/20 transition-all duration-500 ${
-                    isMenuOpen ? 'translate-y-0' : '-translate-y-full'
-                }`}>
-                    {/* Animated Background */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-transparent to-purple-900/10" />
-                        <div 
-                            className="absolute inset-0 opacity-20"
-                            style={{
-                                backgroundImage: `
-                                    linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px),
-                                    linear-gradient(180deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
-                                `,
-                                backgroundSize: "20px 20px"
-                            }}
-                        />
-                    </div>
-
-                    <div className="relative p-6 space-y-4">
+                {/* Mobile Menu Content */}
+                <div className="absolute top-0 right-0 w-80 h-full bg-pure-black border-l border-cyber-cyan/30 p-6">
+                    <div className="flex flex-col space-y-4 mt-20">
                         {navItems.map((item, index) => (
                             <Link
                                 key={item.id}
                                 href={item.href}
-                                onClick={() => setIsMenuOpen(false)}
-                                className={`block group transition-all duration-300 ${
-                                    isMenuOpen ? 'animate-slideInUp' : ''
-                                }`}
-                                style={{ animationDelay: `${index * 0.1}s` }}
-                            >
-                                <div className={`flex items-center space-x-4 p-4 rounded-xl transition-all duration-300 ${
+                                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                                     activeSection === item.id || router.pathname === item.href
-                                        ? 'bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-500/30 text-cyan-300'
-                                        : 'text-slate-300 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-purple-600/10 hover:border hover:border-cyan-500/20 hover:text-cyan-400'
-                                }`}>
-                                    <FontAwesomeIcon 
-                                        icon={item.icon} 
-                                        className={`text-lg transition-all duration-300 ${
-                                            activeSection === item.id || router.pathname === item.href
-                                                ? 'text-cyan-400 animate-pulse'
-                                                : 'group-hover:text-cyan-400 group-hover:animate-pulse'
-                                        }`}
-                                    />
-                                    <span className="text-lg font-medium tracking-wide">{item.label}</span>
-                                </div>
+                                        ? 'text-cyber-cyan border border-cyber-cyan/50 bg-cyber-cyan/10'
+                                        : 'text-cyber-white hover:text-cyber-cyan border border-transparent hover:border-cyber-cyan/30'
+                                }`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <FontAwesomeIcon 
+                                    icon={item.icon} 
+                                    className="text-lg"
+                                />
+                                <span className="font-medium font-inter">{item.label}</span>
                             </Link>
                         ))}
                     </div>
                 </div>
             </div>
-
-            {/* Custom Styles */}
-            <style jsx>{`
-                @keyframes grid-flow {
-                    0% { transform: translateX(-30px) translateY(-30px); }
-                    100% { transform: translateX(0) translateY(0); }
-                }
-                
-                @keyframes slideInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                
-                .animate-slideInUp {
-                    animation: slideInUp 0.6s ease-out forwards;
-                }
-            `}</style>
         </>
     );
 }

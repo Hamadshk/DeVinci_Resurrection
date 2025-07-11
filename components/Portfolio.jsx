@@ -5,34 +5,41 @@ import { HolographicCard, FuturisticGrid, NeonText } from './FuturisticComponent
 
 export default function Portfolio({ inView }) {
   return (
-    <div className={`portfolio ${inView && "portfolio-in-view"} min-h-screen py-16 relative overflow-hidden`}>
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute w-96 h-96 -top-48 -right-48 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute w-96 h-96 -bottom-48 -left-48 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
-        
-        {/* Enhanced Grid Pattern */}
-        <FuturisticGrid intensity="medium" />
-      </div>
+    <div className={`portfolio ${inView && "portfolio-in-view"} min-h-screen py-16 relative overflow-hidden bg-pure-black`}>
+      {/* Futuristic Grid Background */}
+      <div className="absolute inset-0 bg-cyber-grid bg-[length:50px_50px] opacity-20" />
+      
+      {/* Geometric corner accents */}
+      <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-cyber-cyan opacity-30" />
+      <div className="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-cyber-cyan opacity-30" />
+      <div className="absolute bottom-8 left-8 w-16 h-16 border-l-2 border-b-2 border-cyber-cyan opacity-30" />
+      <div className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-cyber-cyan opacity-30" />
 
       <div className="max-w-screen-xl mx-auto px-4 lg:px-6 relative z-10">
         <div className="text-center mb-12">
-          <NeonText size="text-5xl" color="cyan" animated className="mb-6">
+          <h2 className="text-5xl font-bold text-cyber-white mb-6 font-mono">
             Portfolio Showcase
-          </NeonText>
-          <p className="text-slate-300 text-xl max-w-2xl mx-auto leading-relaxed">
+          </h2>
+          
+          {/* Geometric divider */}
+          <div className="relative mb-8">
+            <div className="h-0.5 w-32 mx-auto bg-cyber-cyan" />
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-cyber-cyan rounded-full animate-pulse" />
+          </div>
+          
+          <p className="text-cyber-white text-xl max-w-2xl mx-auto leading-relaxed font-inter">
             Experience our comprehensive portfolio with an enhanced, Chrome-compatible PDF viewer featuring detailed case studies, project highlights, and success stories that showcase our expertise in web development, mobile apps, and digital solutions.
           </p>
           
-          {/* Enhanced Decorative Elements */}
-          <div className="flex items-center justify-center space-x-4 mt-8">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-cyan-500"></div>
-            <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
-            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-cyan-500"></div>
+          {/* Futuristic accent elements */}
+          <div className="flex items-center justify-center space-x-8 mt-8">
+            <div className="w-12 h-0.5 bg-cyber-cyan" />
+            <div className="w-3 h-3 bg-cyber-cyan rounded-full animate-pulse" />
+            <div className="w-12 h-0.5 bg-cyber-cyan" />
           </div>
         </div>
 
-        {/* Beautiful PDF Portfolio Viewer - Chrome Compatible */}
+        {/* Beautiful PDF Portfolio Viewer */}
         <div className="portfolio-pdf-section mb-12">
           <BeautifulPDFViewer 
             file="/portfolio.pdf" 
@@ -40,113 +47,103 @@ export default function Portfolio({ inView }) {
           />
         </div>
         
-        {/* Enhanced Portfolio Information Cards */}
+        {/* Portfolio Information Cards */}
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Portfolio Features Card */}
-          <HolographicCard className="p-8">
+          <div className="bg-glass-black backdrop-blur-cyber border border-glass-white rounded-lg p-8 hover:border-cyber-cyan transition-all duration-300">
             <div className="flex items-center space-x-3 mb-6">
-              <FuturisticIcon 
-                icon={ProjectIcons.web.icon} 
-                variant="contained" 
-                glowColor="cyan" 
-                size="lg"
-              />
-              <h3 className="text-xl font-semibold text-white">What's Inside Our Portfolio</h3>
+              <div className="w-12 h-12 bg-cyber-cyan rounded-lg flex items-center justify-center">
+                <span className="text-pure-black text-xl">📊</span>
+              </div>
+              <h3 className="text-xl font-semibold text-cyber-white font-inter">What's Inside Our Portfolio</h3>
             </div>
             
             <div className="space-y-4">
               <div className="group">
-                <h4 className="font-medium text-cyan-400 mb-3 group-hover:text-cyan-300 transition-colors flex items-center">
-                  <FuturisticIcon icon={ProjectIcons.web.icon} glowColor="cyan" className="mr-2" />
+                <h4 className="font-medium text-cyber-cyan mb-3 font-inter">
                   Comprehensive Case Studies
                 </h4>
-                <ul className="space-y-2 text-slate-300">
-                  <li className="flex items-center space-x-2 hover:text-white transition-colors">
-                    <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full"></div>
+                <ul className="space-y-2 text-cyber-white font-inter">
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-cyber-cyan rounded-full" />
                     <span>Complete project workflows & methodologies</span>
                   </li>
-                  <li className="flex items-center space-x-2 hover:text-white transition-colors">
-                    <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full"></div>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-cyber-cyan rounded-full" />
                     <span>Technical implementation details & architecture</span>
                   </li>
-                  <li className="flex items-center space-x-2 hover:text-white transition-colors">
-                    <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full"></div>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-cyber-cyan rounded-full" />
                     <span>Real client testimonials & measurable results</span>
                   </li>
-                  <li className="flex items-center space-x-2 hover:text-white transition-colors">
-                    <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full"></div>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-cyber-cyan rounded-full" />
                     <span>Before/after comparisons & success metrics</span>
                   </li>
                 </ul>
               </div>
             </div>
-          </HolographicCard>
+          </div>
 
           {/* Project Categories Card */}
-          <HolographicCard className="p-8">
+          <div className="bg-glass-black backdrop-blur-cyber border border-glass-white rounded-lg p-8 hover:border-cyber-cyan transition-all duration-300">
             <div className="flex items-center space-x-3 mb-6">
-              <FuturisticIcon 
-                icon={ProjectIcons.ai.icon} 
-                variant="contained" 
-                glowColor="purple" 
-                size="lg"
-              />
-              <h3 className="text-xl font-semibold text-white">Featured Project Categories</h3>
+              <div className="w-12 h-12 bg-cyber-cyan rounded-lg flex items-center justify-center">
+                <span className="text-pure-black text-xl">🚀</span>
+              </div>
+              <h3 className="text-xl font-semibold text-cyber-white font-inter">Featured Project Categories</h3>
             </div>
             
             <div className="space-y-4">
               <div className="grid grid-cols-1 gap-3">
                 {[
                   { 
-                    iconConfig: ProjectIcons.web, 
                     title: 'Web Development Projects', 
-                    desc: 'Full-stack solutions & modern frameworks' 
+                    desc: 'Full-stack solutions & modern frameworks',
+                    icon: '🌐'
                   },
                   { 
-                    iconConfig: ProjectIcons.mobile, 
                     title: 'Mobile App Development', 
-                    desc: 'iOS & Android native & cross-platform' 
+                    desc: 'iOS & Android native & cross-platform',
+                    icon: '📱'
                   },
                   { 
-                    iconConfig: ProjectIcons.design, 
                     title: 'UI/UX Design Solutions', 
-                    desc: 'User-centered design & prototyping' 
+                    desc: 'User-centered design & prototyping',
+                    icon: '🎨'
                   },
                   { 
-                    iconConfig: ProjectIcons.ecommerce, 
                     title: 'E-commerce Platforms', 
-                    desc: 'Complete online business solutions' 
+                    desc: 'Complete online business solutions',
+                    icon: '🛒'
                   },
                 ].map((category, index) => (
-                  <div key={index} className="group p-3 rounded-lg hover:bg-slate-700/30 transition-all duration-200 cursor-pointer">
+                  <div key={index} className="group p-3 rounded-lg border border-glass-white hover:border-cyber-cyan transition-all duration-200 cursor-pointer">
                     <div className="flex items-start space-x-3">
-                      <FuturisticIcon 
-                        icon={category.iconConfig.icon} 
-                        glowColor={category.iconConfig.color}
-                        animated
-                        className="group-hover:scale-110 transition-transform mt-1"
-                      />
+                      <div className="w-8 h-8 bg-cyber-cyan rounded-lg flex items-center justify-center text-pure-black text-sm mt-1">
+                        {category.icon}
+                      </div>
                       <div>
-                        <h5 className="font-medium text-slate-200 group-hover:text-white transition-colors">{category.title}</h5>
-                        <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors">{category.desc}</p>
+                        <h5 className="font-medium text-cyber-white font-inter">{category.title}</h5>
+                        <p className="text-sm text-cyber-white/80 font-inter">{category.desc}</p>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          </HolographicCard>
+          </div>
         </div>
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 border border-cyan-500/30 rounded-full text-cyan-300 mb-4">
+          <div className="inline-flex items-center space-x-2 px-6 py-3 bg-glass-black border border-cyber-cyan rounded-lg text-cyber-cyan mb-4">
             <span className="animate-pulse">✨</span>
-            <span className="text-sm font-medium">Enhanced PDF viewer with Chrome optimization & fullscreen support</span>
+            <span className="text-sm font-medium font-inter">Your Vision Our Code</span>
             <span className="animate-pulse">✨</span>
           </div>
-          <p className="text-slate-400 text-sm">
-            Scroll through the interactive PDF above or use the "View Full Screen" button for the best experience
+          <p className="text-cyber-white text-sm font-inter">
+            DeVinci Codes
           </p>
         </div>
       </div>

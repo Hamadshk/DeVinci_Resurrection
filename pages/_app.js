@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import FooterWithSocialMediaIcons from '../components/FooterWithSocialMediaIcons'
+import PerformanceOptimizer from '../components/PerformanceOptimizer'
 import { useState, useEffect } from 'react'
 
 export default function App({ Component, pageProps }) {
@@ -27,9 +28,11 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
-    <div>
-      <Component {...pageProps} />
-      <FooterWithSocialMediaIcons />
-    </div>
+    <PerformanceOptimizer>
+      <div>
+        <Component {...pageProps} />
+        <FooterWithSocialMediaIcons />
+      </div>
+    </PerformanceOptimizer>
   )
 } 

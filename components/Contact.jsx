@@ -16,12 +16,14 @@ export default function Contact({ inView }) {
   const [showSpinner, setShowSpinner] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  
   function controlForm(event) {
     setShowAlert(false);
     setInputFeilds((curr) => {
       return { ...curr, [event.target.name]: event.target.value };
     });
   }
+  
   function controlSendEmail(event) {
     setShowSpinner(true);
     event.preventDefault();
@@ -72,45 +74,55 @@ export default function Contact({ inView }) {
         );
     }
   }
+  
   return (
-    <form ref={form} className={`contact ${inView && "contact-in-view"}`}>
-      <div className={`isolate min-h-screen py-16`}>
-        <div className="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <form ref={form} className={`contact ${inView && "contact-in-view"} bg-pure-black`}>
+      <div className="isolate min-h-screen py-16 relative">
+        {/* Futuristic Grid Background */}
+        <div className="absolute inset-0 bg-cyber-grid bg-[length:50px_50px] opacity-20" />
+        
+        {/* Geometric corner accents */}
+        <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-cyber-cyan opacity-30" />
+        <div className="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-cyber-cyan opacity-30" />
+        <div className="absolute bottom-8 left-8 w-16 h-16 border-l-2 border-b-2 border-cyber-cyan opacity-30" />
+        <div className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-cyber-cyan opacity-30" />
+        
+        <div className="max-w-screen-xl mx-auto px-4 lg:px-6 relative z-10">
           <div className="max-w-screen-md mb-8 lg:mb-16">
-            <h2 className="mb-6 text-5xl tracking-tight font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="mb-6 text-5xl tracking-tight font-extrabold text-cyber-white font-mono">
               Contact Us
             </h2>
-            <p className="text-slate-300 text-xl max-w-2xl leading-relaxed">
+            <p className="text-cyber-white text-xl max-w-2xl leading-relaxed font-inter">
               We treat customers as if we are the customer! Let's discuss your next big project.
             </p>
             
-            {/* Decorative Elements */}
-            <div className="flex items-center justify-center space-x-4 mt-8">
-              <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-cyan-500"></div>
-              <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
-              <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-cyan-500"></div>
+            {/* Futuristic accent elements */}
+            <div className="flex items-center justify-center space-x-8 mt-8">
+              <div className="w-12 h-0.5 bg-cyber-cyan" />
+              <div className="w-3 h-3 bg-cyber-cyan rounded-full animate-pulse" />
+              <div className="w-12 h-0.5 bg-cyber-cyan" />
             </div>
           </div>
           
           {showAlert && (
-            <div className={`mb-8 p-4 rounded-lg border ${
+            <div className={`mb-8 p-4 rounded-lg border backdrop-blur-cyber ${
               alertColor === 'info' 
-                ? 'bg-cyan-900/30 border-cyan-500/30 text-cyan-200' 
-                : 'bg-red-900/30 border-red-500/30 text-red-200'
+                ? 'bg-glass-black border-cyber-cyan text-cyber-cyan' 
+                : 'bg-glass-black border-cyber-white text-cyber-white'
             }`}>
               <div className="flex items-center space-x-2">
                 <HiInformationCircle className="text-lg" />
-                <span>{alertMessage}</span>
+                <span className="font-inter">{alertMessage}</span>
               </div>
             </div>
           )}
 
-          <section className="text-slate-300 body-font relative">
+          <section className="text-cyber-white body-font relative">
             <div className="container mx-auto flex sm:flex-nowrap flex-wrap gap-8">
               {/* Map Section */}
-              <div className="lg:w-2/3 md:w-1/2 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden p-6 shadow-2xl">
+              <div className="lg:w-2/3 md:w-1/2 bg-glass-black backdrop-blur-cyber border border-glass-white rounded-lg overflow-hidden p-6 shadow-2xl">
                 <div className="relative h-96 rounded-lg overflow-hidden">
-                  {/* Enhanced Google Maps Iframe */}
+                  {/* Clean map container */}
                   <iframe
                     width="100%"
                     height="100%"
@@ -118,7 +130,7 @@ export default function Contact({ inView }) {
                     title="DeVinci Codes Location - Johar Town, Lahore"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.176234567891!2d74.25636269870087!3d31.46458205130698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1735948800001!5m2!1sen!2s"
                     style={{ 
-                      filter: "brightness(0.8) contrast(1.2)",
+                      filter: "brightness(0.3) contrast(1.2) hue-rotate(180deg)",
                       border: 0
                     }}
                     allowFullScreen=""
@@ -133,28 +145,28 @@ export default function Contact({ inView }) {
                     }}
                   ></iframe>
                   
-                  {/* Enhanced Fallback Map */}
+                  {/* Fallback Map */}
                   <div 
-                    className="absolute inset-0 rounded-lg bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm border border-slate-600/50 flex items-center justify-center"
+                    className="absolute inset-0 rounded-lg bg-glass-black backdrop-blur-cyber border border-cyber-cyan flex items-center justify-center"
                     style={{ display: 'none' }}
                   >
                     <div className="text-center p-8">
                       <div className="mb-6">
-                        <svg className="w-16 h-16 mx-auto text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-16 h-16 mx-auto text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                       </div>
-                      <h3 className="text-xl font-semibold text-white mb-2">Our Location</h3>
-                      <p className="text-slate-300 mb-4">Johar Town, Lahore, Punjab, Pakistan</p>
-                      <p className="text-slate-400 text-sm mb-6">Map temporarily unavailable. Use the button below to view our location.</p>
+                      <h3 className="text-xl font-semibold text-cyber-white mb-2 font-inter">Our Location</h3>
+                      <p className="text-cyber-white mb-4 font-inter">Johar Town, Lahore, Punjab, Pakistan</p>
+                      <p className="text-cyber-white text-sm mb-6 font-inter">Map temporarily unavailable. Use the button below to view our location.</p>
                       
                       <div className="space-y-3">
                         <a
                           href="https://maps.google.com/?q=Johar+Town,+Lahore,+Punjab,+Pakistan"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center space-x-2 bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                          className="inline-flex items-center space-x-2 bg-cyber-cyan hover:bg-cyber-white text-pure-black px-6 py-3 rounded-lg transition-colors font-inter font-medium"
                         >
                           <span>View on Google Maps</span>
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,7 +178,7 @@ export default function Contact({ inView }) {
                           onClick={() => {
                             window.location.reload();
                           }}
-                          className="block mx-auto text-cyan-400 hover:text-cyan-300 text-sm underline transition-colors"
+                          className="block mx-auto text-cyber-cyan hover:text-cyber-white text-sm underline transition-colors font-inter"
                         >
                           Refresh page to retry loading map
                         </button>
@@ -177,138 +189,100 @@ export default function Contact({ inView }) {
                 
                 {/* Contact Info Cards */}
                 <div className="mt-6 space-y-4">
-                  <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30">
-                    <h3 className="font-semibold text-cyan-400 tracking-wide text-sm uppercase mb-2">
+                  <div className="bg-glass-black backdrop-blur-cyber rounded-lg p-4 border border-glass-white">
+                    <h3 className="font-semibold text-cyber-cyan tracking-wide text-sm uppercase mb-2 font-inter">
                       Address
                     </h3>
-                    <p className="text-slate-300">Pakistan, Punjab, Lahore, Johar Town</p>
+                    <p className="text-cyber-white font-inter">Pakistan, Punjab, Lahore, Johar Town</p>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30">
-                      <h3 className="font-semibold text-cyan-400 tracking-wide text-sm uppercase mb-2">
+                    <div className="bg-glass-black backdrop-blur-cyber rounded-lg p-4 border border-glass-white">
+                      <h3 className="font-semibold text-cyber-cyan tracking-wide text-sm uppercase mb-2 font-inter">
                         Email
                       </h3>
                       <a
                         href="mailto:devincicodes.official@gmail.com"
-                        className="text-blue-400 hover:text-blue-300 transition-colors underline decoration-blue-500/50"
+                        className="text-cyber-cyan hover:text-cyber-white transition-colors underline font-inter"
                       >
                         devincicodes.official@gmail.com
                       </a>
                     </div>
                     
-                    <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30">
-                      <h3 className="font-semibold text-cyan-400 tracking-wide text-sm uppercase mb-2">
-                        WhatsApp
+                    <div className="bg-glass-black backdrop-blur-cyber rounded-lg p-4 border border-glass-white">
+                      <h3 className="font-semibold text-cyber-cyan tracking-wide text-sm uppercase mb-2 font-inter">
+                        Phone
                       </h3>
-                      <a
-                        className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors underline decoration-green-500/50"
-                        href="https://wa.me/+923230018893"
-                      >
-                        <img width={"16px"} src={image} alt="" />
-                        <span>+923230018893</span>
-                      </a>
+                      <p className="text-cyber-white font-inter">+92 321 0555929</p>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Contact Form */}
-              <div className="lg:w-1/3 md:w-1/2 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 shadow-2xl">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold text-white mb-2">
-                    Send us your message
-                  </h3>
-                  <p className="text-slate-400">
-                    We are waiting for you, kindly make it short and precise!
-                  </p>
-                </div>
+              <div className="lg:w-1/3 md:w-1/2 bg-glass-black backdrop-blur-cyber border border-glass-white rounded-lg p-8 shadow-2xl">
+                <h2 className="text-2xl font-bold text-cyber-white mb-6 font-inter">Send Message</h2>
                 
                 <div className="space-y-6">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-slate-300 mb-2"
-                    >
+                    <label className="block text-cyber-cyan text-sm font-medium mb-2 font-inter">
                       Name
                     </label>
                     <input
-                      required
                       type="text"
-                      id="name"
-                      onChange={(e) => controlForm(e)}
-                      value={inputFeilds.user_name}
                       name="user_name"
-                      className="w-full bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 outline-none"
-                      placeholder="Your full name"
+                      value={inputFeilds.user_name}
+                      onChange={controlForm}
+                      className="w-full px-4 py-3 bg-glass-black border border-glass-white rounded-lg text-cyber-white placeholder-cyber-white/50 focus:border-cyber-cyan focus:outline-none transition-colors font-inter"
+                      placeholder="Enter your name"
                     />
                   </div>
                   
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-slate-300 mb-2"
-                    >
+                    <label className="block text-cyber-cyan text-sm font-medium mb-2 font-inter">
                       Email
                     </label>
                     <input
-                      required
                       type="email"
-                      id="email"
-                      onChange={(e) => controlForm(e)}
-                      value={inputFeilds.user_email}
                       name="user_email"
-                      className="w-full bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 outline-none"
-                      placeholder="your.email@example.com"
+                      value={inputFeilds.user_email}
+                      onChange={controlForm}
+                      className="w-full px-4 py-3 bg-glass-black border border-glass-white rounded-lg text-cyber-white placeholder-cyber-white/50 focus:border-cyber-cyan focus:outline-none transition-colors font-inter"
+                      placeholder="Enter your email"
                     />
                   </div>
                   
                   <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-slate-300 mb-2"
-                    >
+                    <label className="block text-cyber-cyan text-sm font-medium mb-2 font-inter">
                       Message
                     </label>
                     <textarea
-                      required
-                      id="message"
                       name="message"
-                      onChange={(e) => controlForm(e)}
                       value={inputFeilds.message}
-                      rows={5}
-                      className="w-full bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 outline-none resize-none"
-                      placeholder="Tell us about your project..."
-                    ></textarea>
+                      onChange={controlForm}
+                      rows={6}
+                      className="w-full px-4 py-3 bg-glass-black border border-glass-white rounded-lg text-cyber-white placeholder-cyber-white/50 focus:border-cyber-cyan focus:outline-none transition-colors resize-none font-inter"
+                      placeholder="Enter your message"
+                    />
                   </div>
                   
                   <button
+                    onClick={controlSendEmail}
                     disabled={showSpinner}
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-cyan-500/25 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-                    onClick={(e) => controlSendEmail(e)}
+                    className="w-full px-6 py-3 bg-cyber-cyan hover:bg-cyber-white text-pure-black font-semibold rounded-lg transition-all duration-300 font-inter disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {showSpinner ? (
-                      <>
-                        <Spinner size="sm" />
+                      <div className="flex items-center justify-center space-x-2">
+                        <svg className="animate-spin h-5 w-5 text-current" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
                         <span>Sending...</span>
-                      </>
+                      </div>
                     ) : (
-                      <span className="flex items-center">
-                        Let's Talk 
-                        <FuturisticIcon 
-                          icon={FuturisticIcons.rocket} 
-                          glowColor="cyan" 
-                          animated 
-                          className="ml-2" 
-                        />
-                      </span>
+                      "Send Message"
                     )}
                   </button>
-                  
-                  <p className="text-xs text-slate-500 text-center">
-                    Expect reply in 1-2 business days.
-                  </p>
                 </div>
               </div>
             </div>

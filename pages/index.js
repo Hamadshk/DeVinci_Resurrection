@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import dynamic from 'next/dynamic';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { initPerformanceOptimizations } from "../utils/performanceOptimizer";
 
 const Header = lazy(() => import("../components/Header"));
 const SkillsPage = lazy(() => import("../components/SkillsPage"));
@@ -19,11 +20,11 @@ const Portfolio = lazy(() => import("../components/Portfolio"));
 // Import components dynamically to avoid SSR issues
 const NavBar = dynamic(() => import("../components/NavBar"), { ssr: false });
 
-// Optimized loading spinner component
+// Updated loading spinner for black theme
 const LoadingSpinner = () => (
-  <div className="flex justify-center items-center py-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-    <div className="w-8 h-8 border-2 border-slate-700 border-t-cyan-500 rounded-full animate-spin"></div>
-    <span className="ml-3 text-slate-400 text-sm">Loading...</span>
+  <div className="flex justify-center items-center py-16 bg-pure-black">
+    <div className="w-8 h-8 border-2 border-glass-white border-t-cyber-cyan rounded-full animate-spin"></div>
+    <span className="ml-3 text-cyber-white text-sm font-inter">Loading...</span>
   </div>
 );
 
@@ -34,23 +35,27 @@ const Home = () => {
 
   useEffect(() => {
     setMounted(true);
+    
+    // Initialize performance optimizations immediately
+    initPerformanceOptimizations();
+    
     // Ensure all critical components are loaded before showing content
     const timer = setTimeout(() => {
       setIsInitialLoading(false);
-    }, 150);
+    }, 100); // Reduced from 150ms for faster loading
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Optimized intersection observer options with better performance
+  // Highly optimized intersection observer options for better performance
   const observerOptions = useMemo(() => ({
     root: null,
-    threshold: 0.1, // Lower threshold for earlier loading
+    threshold: 0.05, // Lower threshold for even earlier loading
     triggerOnce: true,
-    rootMargin: '100px 0px', // Larger margin for smoother loading
+    rootMargin: '150px 0px', // Larger margin for pre-loading
   }), []);
 
-  // Consolidated intersection observers
+  // Consolidated intersection observers with performance optimization
   const [aboutRef, aboutInView] = useInView(observerOptions);
   const [skillsRef, skillsInView] = useInView(observerOptions);
   const [timelineRef, timelineInView] = useInView(observerOptions);
@@ -60,10 +65,10 @@ const Home = () => {
 
   if (!mounted || isInitialLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-pure-black flex items-center justify-center">
         <div className="flex flex-col items-center">
-          <div className="w-8 h-8 border-2 border-slate-700 border-t-cyan-500 rounded-full animate-spin"></div>
-          <span className="text-slate-400 text-sm mt-2">Preparing your experience...</span>
+          <div className="w-8 h-8 border-2 border-glass-white border-t-cyber-cyan rounded-full animate-spin"></div>
+          <span className="text-cyber-white text-sm mt-2 font-inter">Preparing your experience...</span>
         </div>
       </div>
     );
@@ -71,36 +76,33 @@ const Home = () => {
 
   return (
     <div 
-      className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 min-h-screen opacity-0 animate-fade-in"
+      className="bg-pure-black min-h-screen opacity-0 animate-fade-in"
       style={{
-        // Optimize for smooth scrolling
-        scrollBehavior: 'smooth',
+        // Optimize for smooth scrolling with hardware acceleration
         WebkitOverflowScrolling: 'touch',
         overflowY: 'auto',
-        height: '100vh',
         animationDelay: '0.1s',
         animationFillMode: 'forwards',
+        transform: 'translate3d(0, 0, 0)', // Force hardware acceleration
+        backfaceVisibility: 'hidden',
       }}
     >
       <section 
         ref={myRef} 
-        className="home-page h-screen hero-grid-bg relative overflow-hidden"
+        className="home-page h-screen relative overflow-hidden bg-pure-black"
         style={{
-          // Only apply GPU acceleration to hero section
-          willChange: 'transform',
+          // Optimize hero section with hardware acceleration
           transform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
         }}
       >
-        {/* Static background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Static gradient overlays for visual interest */}
-          <div 
-            className="absolute w-96 h-96 -top-48 -right-48 bg-gradient-to-r from-cyan-500/8 to-blue-500/8 rounded-full blur-3xl"
-          />
-          <div 
-            className="absolute w-96 h-96 -bottom-48 -left-48 bg-gradient-to-r from-purple-500/8 to-pink-500/8 rounded-full blur-3xl"
-          />
-        </div>
+        {/* Futuristic grid background */}
+        <div className="absolute inset-0 bg-cyber-grid bg-[length:50px_50px] opacity-20" />
+        
+        {/* Geometric corner accents */}
+        <div className="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-cyber-cyan opacity-30" />
+        <div className="absolute top-8 right-8 w-20 h-20 border-r-2 border-t-2 border-cyber-cyan opacity-30" />
 
         <div className="relative z-10">
           <NavBar />
@@ -118,7 +120,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Optimized Sections with Grid Backgrounds */}
+      {/* Main Content Sections */}
       <Suspense fallback={<LoadingSpinner />}>
         <section
           id="about"
@@ -133,7 +135,7 @@ const Home = () => {
         <section 
           id="skills" 
           ref={skillsRef} 
-          className=""
+          className="py-8"
         >
           <SkillsPage inView={skillsInView} />
         </section>
@@ -142,7 +144,7 @@ const Home = () => {
       <Suspense fallback={<LoadingSpinner />}>
         <section 
           id="testimonials" 
-          className=""
+          className="py-8"
         >
           <TestimonialsCarousel />
         </section>
@@ -166,16 +168,6 @@ const Home = () => {
           <Portfolio inView={portfolioInView} />
         </section>
       </Suspense>
-
-      {/* <Suspense fallback={<LoadingSpinner />}>
-        <section
-          id="timeline"
-          ref={timelineRef}
-          className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6"
-        >
-          <VerticalTimeline inView={timelineInView} />
-        </section>
-      </Suspense> */}
 
       <Suspense fallback={<LoadingSpinner />}>
         <section

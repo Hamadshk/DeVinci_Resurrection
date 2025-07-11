@@ -168,35 +168,24 @@ const TestimonialsCarousel = ({ inView }) => {
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <section className="pt-8 pb-12 px-4 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute w-96 h-96 -top-48 -right-48 bg-gradient-to-r from-cyan-500/8 to-blue-500/8 rounded-full blur-3xl" />
-        <div className="absolute w-96 h-96 -bottom-48 -left-48 bg-gradient-to-r from-purple-500/8 to-pink-500/8 rounded-full blur-3xl" />
-        
-        {/* Grid Pattern */}
-        <div 
-          className="absolute inset-0 opacity-3"
-          style={{
-            backgroundImage: `
-              linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
-              linear-gradient(180deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px)
-            `,
-            backgroundSize: "50px 50px"
-          }}
-        />
-      </div>
+    <section className="pt-8 pb-12 px-4 relative overflow-hidden bg-pure-black">
+      {/* Futuristic Grid Background */}
+      <div className="absolute inset-0 bg-cyber-grid bg-[length:50px_50px] opacity-20" />
+      
+      {/* Geometric corner accents */}
+      <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-cyber-cyan opacity-20" />
+      <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-cyber-cyan opacity-20" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full border border-cyan-500/20">
-            <Star className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-300 text-sm font-medium">Client Reviews</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-glass-black rounded-lg border border-cyber-cyan">
+            <Star className="w-4 h-4 text-cyber-cyan" />
+            <span className="text-cyber-cyan text-sm font-medium font-inter">Client Reviews</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mt-3 mb-3">
-            Trusted by <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">Global Clients</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-cyber-white leading-tight mt-3 mb-3 font-mono">
+            Trusted by <span className="text-cyber-cyan">Global Clients</span>
           </h2>
           
           <p className="text-lg text-slate-300 max-w-3xl mx-auto">
