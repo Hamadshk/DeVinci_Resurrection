@@ -40,7 +40,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; object-src 'self'; frame-src 'self' https://www.google.com https://maps.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; object-src 'self'; frame-src 'self' https://www.google.com https://maps.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;",
           },
         ],
       },

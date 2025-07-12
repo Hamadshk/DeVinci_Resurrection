@@ -78,9 +78,17 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>DeVinci Resurrection - AI & Automation Solutions</title>
+        <title>DeVinci Codes - AI & Automation Solutions</title>
         <meta name="description" content="Professional AI and automation solutions for modern businesses" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Preload and optimize Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Inter:wght@300;400;500;600;700;800;900&display=swap" 
+          rel="stylesheet"
+        />
         
         {/* Favicon and app icons */}
         <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
