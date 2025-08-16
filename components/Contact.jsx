@@ -216,6 +216,56 @@ export default function Contact({ inView }) {
                       <p className="text-cyber-white font-inter">+92 321 0555929</p>
                     </div>
                   </div>
+                  
+                  {/* Team Members Contact Info */}
+                  <div className="mt-6">
+                    <h3 className="font-semibold text-cyber-cyan tracking-wide text-sm uppercase mb-4 font-inter">
+                      Our Team
+                    </h3>
+                    <div className="space-y-3">
+                      {/* Syed Zaki Haider */}
+                      <div className="bg-glass-black backdrop-blur-cyber rounded-lg p-4 border border-glass-white">
+                        <h4 className="font-semibold text-cyber-white mb-2 font-inter">Syed Zaki Haider</h4>
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
+                          <a
+                            href="mailto:dev.zakihaider@gmail.com"
+                            className="text-cyber-cyan hover:text-cyber-white transition-colors underline font-inter text-sm"
+                          >
+                            dev.zakihaider@gmail.com
+                          </a>
+                          <span className="text-cyber-white font-inter text-sm">+92 312 4911443</span>
+                        </div>
+                      </div>
+                      
+                      {/* Hamad Yousaf */}
+                      <div className="bg-glass-black backdrop-blur-cyber rounded-lg p-4 border border-glass-white">
+                        <h4 className="font-semibold text-cyber-white mb-2 font-inter">Hamad Yousaf</h4>
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
+                          <a
+                            href="mailto:dev.hamadyousaf@gmail.com"
+                            className="text-cyber-cyan hover:text-cyber-white transition-colors underline font-inter text-sm"
+                          >
+                            dev.hamadyousaf@gmail.com
+                          </a>
+                          <span className="text-cyber-white font-inter text-sm">+92 321 0555929</span>
+                        </div>
+                      </div>
+                      
+                      {/* Taha Sheikh */}
+                      <div className="bg-glass-black backdrop-blur-cyber rounded-lg p-4 border border-glass-white">
+                        <h4 className="font-semibold text-cyber-white mb-2 font-inter">Taha Sheikh</h4>
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
+                          <a
+                            href="mailto:dev.tahashk@gmail.com"
+                            className="text-cyber-cyan hover:text-cyber-white transition-colors underline font-inter text-sm"
+                          >
+                            dev.tahashk@gmail.com
+                          </a>
+                          <span className="text-cyber-white font-inter text-sm">+92 334 4264186</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
