@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(copy \"e:\\DeVinci_Resurrection\\assets\\logoFinal.png\" \"e:\\DeVinci_Resurrection\\public\\logoFinal.png\")",
+      "Bash(for file in \"Clean Cubico.avif\" \"Falcon-Global-Consulting.jpeg\" \"Hostly.jpg\" \"Med Optimal.png\" \"Millionero.png\" \"Modern Engine Pros.jpg\" \"Pilot Trader.png\" \"Prestige-Bahamas.png\")",
+      "Bash(do if [ ! -f \"$file\" ])",
+      "Bash(then echo \"Missing: $file\")",
+      "Bash(fi)",
+      "Bash(done)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
