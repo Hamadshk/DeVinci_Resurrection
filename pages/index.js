@@ -2,6 +2,39 @@ import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import SEOHead from '../components/SEOHead';
 
+// Mobile tag expansion handler
+function MobileTag({ href, children, gradient, target, rel }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleClick = (e) => {
+    // On mobile, require two taps
+    if (window.innerWidth < 1024) {
+      if (!isExpanded) {
+        e.preventDefault();
+        setIsExpanded(true);
+        // Auto-collapse after 3 seconds
+        setTimeout(() => setIsExpanded(false), 3000);
+      }
+      // If already expanded, allow default link behavior
+    }
+  };
+
+  return (
+    <a
+      href={href}
+      target={target}
+      rel={rel}
+      onClick={handleClick}
+      className={`group relative ${gradient} text-white rounded-l-lg shadow-2xl transition-all duration-300 touch-manipulation ${
+        isExpanded ? 'translate-x-0' : 'lg:translate-x-40 translate-x-[180px]'
+      } lg:hover:translate-x-0`}
+      style={{ width: '200px' }}
+    >
+      {children}
+    </a>
+  );
+}
+
 // Dynamic imports
 const AIVoiceReceptionistCalculator = dynamic(() => import('../components/AIVoiceReceptionistCalculator'), { ssr: false });
 const AIAutomationCalculator = dynamic(() => import('../components/AIAutomationCalculator'), { ssr: false });
@@ -132,106 +165,97 @@ const HomePage = () => {
 
       <div className="min-h-screen bg-white">
         {/* Floating Sidebar Tags - Bookmark Style */}
-        <div className="fixed right-0 top-1/4 z-40 flex flex-col gap-4">
+        <div className="fixed right-0 top-1/4 z-40 flex flex-col gap-3">
           {/* View Portfolio Tag */}
-          <a
+          <MobileTag
             href="https://portfolio-showcase--06hhxbf.gamma.site/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-l-lg shadow-2xl hover:shadow-indigo-600/50 transition-all duration-300 hover:translate-x-0 translate-x-40"
-            style={{ width: '200px' }}
+            gradient="bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-indigo-600/50"
           >
-            <div className="flex items-center justify-between p-4">
+            <div className="flex items-center justify-between p-3 md:p-4">
               <div className="flex-1">
-                <div className="font-bold text-sm">View Portfolio</div>
-                <div className="text-xs opacity-90">100+ Projects</div>
+                <div className="font-bold text-xs md:text-sm">View Portfolio</div>
+                <div className="text-[10px] md:text-xs opacity-90">100+ Projects</div>
               </div>
-              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
             </div>
-            {/* Bookmark tab */}
-            <div className="absolute left-0 top-0 bottom-0 w-2 bg-white/30 rounded-l-lg"></div>
-          </a>
+            {/* Bookmark tab - 5% visible on mobile */}
+            <div className="absolute left-0 top-0 bottom-0 w-3 md:w-2 bg-white/30 rounded-l-lg"></div>
+          </MobileTag>
 
           {/* Book Consultation Tag */}
-          <a
+          <MobileTag
             href="#contact"
-            className="group relative bg-gradient-to-r from-primary to-blue-600 text-white rounded-l-lg shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:translate-x-0 translate-x-40"
-            style={{ width: '200px' }}
+            gradient="bg-gradient-to-r from-primary to-blue-600 hover:shadow-primary/50"
           >
-            <div className="flex items-center justify-between p-4">
+            <div className="flex items-center justify-between p-3 md:p-4">
               <div className="flex-1">
-                <div className="font-bold text-sm">Book Consultation</div>
-                <div className="text-xs opacity-90">Free 30-min call</div>
+                <div className="font-bold text-xs md:text-sm">Book Consultation</div>
+                <div className="text-[10px] md:text-xs opacity-90">Free 30-min call</div>
               </div>
-              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
-            {/* Bookmark tab */}
-            <div className="absolute left-0 top-0 bottom-0 w-2 bg-white/30 rounded-l-lg"></div>
-          </a>
+            <div className="absolute left-0 top-0 bottom-0 w-3 md:w-2 bg-white/30 rounded-l-lg"></div>
+          </MobileTag>
 
           {/* Talk with AI Tag */}
-          <a
+          <MobileTag
             href="#contact"
-            className="group relative bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-l-lg shadow-2xl hover:shadow-green-600/50 transition-all duration-300 hover:translate-x-0 translate-x-40"
-            style={{ width: '200px' }}
+            gradient="bg-gradient-to-r from-green-600 to-emerald-600 hover:shadow-green-600/50"
           >
-            <div className="flex items-center justify-between p-4">
+            <div className="flex items-center justify-between p-3 md:p-4">
               <div className="flex-1">
-                <div className="font-bold text-sm">Talk with AI</div>
-                <div className="text-xs opacity-90">Get instant answers</div>
+                <div className="font-bold text-xs md:text-sm">Talk with AI</div>
+                <div className="text-[10px] md:text-xs opacity-90">Get instant answers</div>
               </div>
-              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
             </div>
-            {/* Bookmark tab */}
-            <div className="absolute left-0 top-0 bottom-0 w-2 bg-white/30 rounded-l-lg"></div>
-          </a>
+            <div className="absolute left-0 top-0 bottom-0 w-3 md:w-2 bg-white/30 rounded-l-lg"></div>
+          </MobileTag>
 
           {/* SalesAura Showcase Tag */}
-          <a
+          <MobileTag
             href="https://www.salesaura.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-l-lg shadow-2xl hover:shadow-purple-600/50 transition-all duration-300 hover:translate-x-0 translate-x-40"
-            style={{ width: '200px' }}
+            gradient="bg-gradient-to-r from-purple-600 to-pink-600 hover:shadow-purple-600/50"
           >
-            <div className="flex items-center justify-between p-4">
+            <div className="flex items-center justify-between p-3 md:p-4">
               <div className="flex-1">
-                <div className="font-bold text-sm">Built by Us</div>
-                <div className="text-xs opacity-90">SalesAura.io</div>
-                <div className="text-xs mt-1 bg-white/20 rounded px-2 py-0.5 inline-block">Visit Site →</div>
+                <div className="font-bold text-xs md:text-sm">Our Product</div>
+                <div className="text-[10px] md:text-xs opacity-90">SalesAura.io</div>
+                <div className="text-[10px] md:text-xs mt-1 bg-white/20 rounded px-2 py-0.5 inline-block">Visit Site →</div>
               </div>
-              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </div>
-            {/* Bookmark tab */}
-            <div className="absolute left-0 top-0 bottom-0 w-2 bg-white/30 rounded-l-lg"></div>
-          </a>
+            <div className="absolute left-0 top-0 bottom-0 w-3 md:w-2 bg-white/30 rounded-l-lg"></div>
+          </MobileTag>
 
           {/* Career Tag */}
-          <a
+          <MobileTag
             href="#contact"
-            className="group relative bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-l-lg shadow-2xl hover:shadow-orange-600/50 transition-all duration-300 hover:translate-x-0 translate-x-40"
-            style={{ width: '200px' }}
+            gradient="bg-gradient-to-r from-orange-600 to-red-600 hover:shadow-orange-600/50"
           >
-            <div className="flex items-center justify-between p-4">
+            <div className="flex items-center justify-between p-3 md:p-4">
               <div className="flex-1">
-                <div className="font-bold text-sm">Join Our Team</div>
-                <div className="text-xs opacity-90">Career Opportunities</div>
+                <div className="font-bold text-xs md:text-sm">Join Our Team</div>
+                <div className="text-[10px] md:text-xs opacity-90">Career Opportunities</div>
               </div>
-              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            {/* Bookmark tab */}
-            <div className="absolute left-0 top-0 bottom-0 w-2 bg-white/30 rounded-l-lg"></div>
-          </a>
+            <div className="absolute left-0 top-0 bottom-0 w-3 md:w-2 bg-white/30 rounded-l-lg"></div>
+          </MobileTag>
         </div>
 
         {/* Pill-Shaped Navigation */}
@@ -257,9 +281,9 @@ const HomePage = () => {
               </div>
 
               {/* CTA Button */}
-              <button className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-full font-semibold">
-                Get Started
-              </button>
+              <a href="#contact" className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-full font-semibold inline-block">
+                Consultation
+              </a>
             </div>
           </div>
         </nav>
@@ -460,10 +484,10 @@ const HomePage = () => {
         <section id="clients" className="section-padding bg-gray-50">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 We Serve <span className="text-primary">Every Business Type</span>
               </h2>
-              <p className="text-xl text-gray-600">From startups to enterprises, we have solutions for everyone</p>
+              <p className="text-lg text-gray-600">From startups to enterprises, we have solutions for everyone</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -581,30 +605,30 @@ const HomePage = () => {
         {/* Project Flow/Process Section - Futuristic Design */}
         <section id="process" className="py-20 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-20">
-              <h2 className="text-5xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-12 md:mb-20">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Our <span className="text-primary">Project Flow</span>
               </h2>
-              <p className="text-xl text-gray-600">From idea to production - A seamless journey</p>
+              <p className="text-lg text-gray-600">From idea to production - A seamless journey</p>
             </div>
 
             {/* Horizontal Flow with Animated Lines */}
             <div className="relative max-w-6xl mx-auto">
-              {/* Animated Connection Line */}
+              {/* Animated Connection Line - Desktop Only */}
               <div className="hidden lg:block absolute top-20 left-0 right-0 h-1">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-20"></div>
                 <div className="process-line-animate absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
               </div>
 
-              {/* Steps Container */}
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4 relative">
+              {/* Steps Container - Vertical on mobile, horizontal on desktop */}
+              <div className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-4 relative">
 
                 {/* Step 1: Meeting */}
                 <div className="process-step group">
                   <div className="flex flex-col items-center">
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-primary rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
-                        <span className="text-4xl font-bold text-white">1</span>
+                    <div className="relative mb-4 md:mb-6">
+                      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-blue-500 to-primary rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">1</span>
                       </div>
                       <div className="absolute -inset-2 bg-gradient-to-br from-blue-400 to-primary rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
                     </div>
@@ -621,9 +645,9 @@ const HomePage = () => {
                 {/* Step 2: Deliverable */}
                 <div className="process-step group">
                   <div className="flex flex-col items-center">
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 bg-gradient-to-br from-red-500 to-secondary rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
-                        <span className="text-4xl font-bold text-white">2</span>
+                    <div className="relative mb-4 md:mb-6">
+                      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-red-500 to-secondary rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">2</span>
                       </div>
                       <div className="absolute -inset-2 bg-gradient-to-br from-red-400 to-secondary rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
                     </div>
@@ -640,9 +664,9 @@ const HomePage = () => {
                 {/* Step 3: MVP */}
                 <div className="process-step group">
                   <div className="flex flex-col items-center">
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
-                        <span className="text-4xl font-bold text-white">3</span>
+                    <div className="relative mb-4 md:mb-6">
+                      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">3</span>
                       </div>
                       <div className="absolute -inset-2 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
                     </div>
@@ -659,9 +683,9 @@ const HomePage = () => {
                 {/* Step 4: Testing */}
                 <div className="process-step group">
                   <div className="flex flex-col items-center">
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
-                        <span className="text-4xl font-bold text-white">4</span>
+                    <div className="relative mb-4 md:mb-6">
+                      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">4</span>
                       </div>
                       <div className="absolute -inset-2 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
                     </div>
@@ -678,9 +702,9 @@ const HomePage = () => {
                 {/* Step 5: Production */}
                 <div className="process-step group">
                   <div className="flex flex-col items-center">
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
-                        <span className="text-4xl font-bold text-white">5</span>
+                    <div className="relative mb-4 md:mb-6">
+                      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg">
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">5</span>
                       </div>
                       <div className="absolute -inset-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
                     </div>
@@ -705,7 +729,7 @@ const HomePage = () => {
             {/* Section Header */}
             <div className="text-center mb-8">
               <h3 className="text-primary font-semibold text-sm mb-2">Our Solutions</h3>
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Cutting-Edge AI Solutions
               </h2>
               <p className="text-lg text-gray-900 font-semibold mb-2">
@@ -1041,10 +1065,10 @@ const HomePage = () => {
         <section id="calculators" className="section-padding bg-white">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Calculate Your <span className="text-primary">ROI</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 See exactly how much you could save with AI automation
               </p>
             </div>
@@ -1069,10 +1093,10 @@ const HomePage = () => {
               <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-4">
                 <span className="text-primary font-semibold text-sm">CLIENT SUCCESS STORIES</span>
               </div>
-              <h2 className="text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 What Our <span className="text-primary">Clients Say</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Real reviews from businesses worldwide who trust DeVinci Codes
               </p>
             </div>
@@ -1101,10 +1125,10 @@ const HomePage = () => {
         <section id="portfolio" className="section-padding bg-white">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Our <span className="text-primary">Portfolio</span>
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-lg text-gray-600">
                 Explore our work and achievements
               </p>
             </div>
